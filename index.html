@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bishop Kammeraad</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
+    <style>
+        :root {
+            --bg-color-light: #f7f9fc;
+            --text-color-light: #333;
+
+            --bg-color-dark: #1d1f27;
+            --text-color-dark: #e0e0e0;
+
+            --accent-color: #4ca1af;
+            --link-color: #4ca1af;
+            --hover-color: #4ca1af;
+            --header-bg: #000;
+            --card-bg-light: #fff;
+            --card-bg-dark: #2a2d37;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-color-dark);
+            color: var(--text-color-dark);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
+            background: var(--bg-color-light);
+            color: var(--text-color-light);
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .terminal-header {
+            background: var(--header-bg);
+            color: #e0e0e0;
+            padding: 20px;
+            font-family: "Courier New", Courier, monospace;
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .ascii-art-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .ascii-art {
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+            white-space: pre;
+            font-size: 0.9rem;
+            color: transparent; /* will show gradient from background */
+            display: inline-block;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+            -webkit-background-clip: text;
+            background-clip: text;
+            transition: transform 0.3s, text-shadow 0.3s;
+        }
+
+        .ascii-art:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .header-info {
+            margin-top: 20px;
+            color: #e0e0e0;
+        }
+
+        .header-info a {
+            color: var(--link-color);
+        }
+
+        .toggle-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 20px;
+            margin-top: 20px;
+            min-width: 100px;
+        }
+
+        .toggle-label {
+            font-size: 0.8rem;
+            margin-top: 5px;
+            color: #e0e0e0;
+            text-align: center;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #444;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: #fff;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        .switch input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+
+        .switch input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 40px 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .section-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hover-card {
+            background: var(--card-bg-dark);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+            cursor: default;
+        }
+
+        body.light-mode .hover-card {
+            background: var(--card-bg-light);
+        }
+
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+
+        body.light-mode h2 {
+            color: var(--hover-color);
+        }
+
+        body:not(.light-mode) h2 {
+            color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #333;
+            color: #fff;
+            margin-top: 40px;
+        }
+
+        /* Directory Nav under info */
+        .directory-nav {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .directory-nav a {
+            margin: 0 15px;
+            font-weight: bold;
+            color: var(--text-color-dark);
+            transition: color 0.3s;
+        }
+
+        body.light-mode .directory-nav a {
+            color: var(--text-color-light);
+        }
+
+        .directory-nav a:hover {
+            color: var(--hover-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="terminal-header">
+        <div class="header-content">
+            <!-- ASCII Art Logo and Info -->
+            <div class="ascii-art-container">
+                <pre class="ascii-art rainbow-text">
+                  dP      oo        dP                       
+                  88                88                       
+                  88d888b.dP.d8888b.88d888b..d8888b.88d888b. 
+                  88'  `8888Y8ooooo.88'  `8888'  `8888'  `88 
+                  88.  .8888      8888    8888.  .8888.  .88 
+                  88Y8888'dP`88888P'dP    dP`88888P'88Y888P' 
+                                                    88       
+                                                    dP    
+                </pre>
+            </div>
+            <div class="toggle-container">
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span class="toggle-label">Dark Mode: <span id="mode-status">ON</span></span>
+            </div>
+        </div>
+        <div class="header-info">
+            <p>Bishop Kammeraad<br>
+            Ann Arbor, MI | <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a> | (248) 403-1677</p>
+            <p><a href="https://www.linkedin.com/in/bishop-kammeraad-80593b204/" target="_blank">LinkedIn</a> | 
+               <a href="https://github.com/porkedchop" target="_blank">GitHub</a></p>
+            <p>OS: macOS, Linux</p>
+            <p>Host: Ann Arbor, MI</p>
+            <p>Theme: <span id="theme-status-display">Dark</span></p>
+            <p>Terminal: zsh</p>
+            <p>Resume: <a href="./resume.pdf" target="_blank">./resume.pdf</a></p>
+        </div>
+    </header>
+
+    <nav class="directory-nav">
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#finance-projects">Finance Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#activities">Activities</a>
+    </nav>
+
+    <section id="education">
+        <div class="container section-container">
+            <h2>Education</h2>
+            <div class="hover-card">
+                <p><strong>University of Michigan - Ann Arbor</strong> (Sep 2020 to Aug 2025)</p>
+                <p>BS in Computer Science, BS in Economics</p>
+                <p><em>Coursework:</em> Data Structures and Algorithms, UI Development, Software Engineering, Database Management Systems, Econometrics, Micro & Macro Economic Theory, Corporate Finance, Money & Banking, Game Theory</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container section-container">
+            <h2>Experience</h2>
+
+            <div class="hover-card">
+                <h3>Mentee, Mentorship Program - Microsoft</h3>
+                <p>Detroit, MI (Jun 2024 to Aug 2024)</p>
+                <ul>
+                    <li>Analyzed organizational data for leadership strategies and decision-making patterns.</li>
+                    <li>Enhanced data communication skills, effectively reporting insights to mentor.</li>
+                    <li>Gained exposure to strategic planning and data-driven decision-making.</li>
+                </ul>
+            </div>
+
+            <div class="hover-card">
+                <h3>Mentee, Mentorship Program - Adobe</h3>
+                <p>Detroit, MI (Jun 2023 to Aug 2023)</p>
+                <ul>
+                    <li>Participated in strategic discussions, analyzing performance metrics.</li>
+                    <li>Observed data analytics in high-level meetings, gaining workflow optimization insights.</li>
+                    <li>Applied data-backed insights to enhance team projects and efficiency.</li>
+                </ul>
+            </div>
+
+            <div class="hover-card">
+                <h3>Technical Staff - Prophets Group</h3>
+                <p>Remote (Jan 2019 to Apr 2021)</p>
+                <ul>
+                    <li>Managed user experience and optimized processes, increasing engagement and satisfaction.</li>
+                    <li>Engineered automation to streamline operations (12% efficiency gain, 20% reduction in times).</li>
+                    <li>Collaborated on financial tracking for accurate projections and data-driven decisions.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container section-container">
+            <h2>Projects</h2>
+
+            <div class="hover-card">
+                <h3>RenderCV Open-Source Project</h3>
+                <ul>
+                    <li>Resolved bugs, implemented user-friendly features, merged into main repository.</li>
+                    <li>Ensured code quality and usability through close collaboration with maintainers.</li>
+                </ul>
+            </div>
+
+            <div class="hover-card">
+                <h3>Among Us Game Engine</h3>
+                <ul>
+                    <li>Implemented a real-time engine supporting multiplayer interactions and tasks.</li>
+                    <li>Utilized hash maps, priority queues, and graph traversal for efficiency.</li>
+                    <li>Enhanced performance and responsiveness via custom memory management and async processing.</li>
+                </ul>
+            </div>
+
+            <div class="hover-card">
+                <h3>Log Manager (LogMan)</h3>
+                <ul>
+                    <li>Built a log management tool for large-scale logs with efficient storage and querying.</li>
+                    <li>Used indexed lists and hash maps for sorting and searching logs.</li>
+                    <li>Integrated filters, sorting options, and excerpts for a seamless user experience.</li>
+                </ul>
+            </div>
+
+            <div class="hover-card">
+                <h3>AI-Powered Ticket Negotiation Tool</h3>
+                <ul>
+                    <li>Developed a program to find optimal ticket prices and negotiate via ChatGPT.</li>
+                    <li>Secured tickets at market prices for higher-margin resales.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="finance-projects">
+        <div class="container section-container">
+            <h2>Finance Projects</h2>
+
+            <div class="hover-card">
+                <h3>RRK Products Capital Structure Analysis</h3>
+                <ul>
+                    <li>Assessed recapitalization impacts on firm value, stock price, and WACC.</li>
+                    <li>Constructed financial models in Excel, evaluating equity/debt financing and distress costs.</li>
+                    <li>Performed sensitivity analyses and recommended value-maximizing strategies.</li>
+                </ul>
+            </div>
+
+            <div class="hover-card">
+                <h3>Crystal Mountain Resort Financial Assessment</h3>
+                <ul>
+                    <li>Analyzed investment in new chair lifts: attendance, pricing, cash flows.</li>
+                    <li>Calculated NPV, IRR, and payback periods for comparison with existing equipment.</li>
+                    <li>Conducted scenario analyses and provided data-backed recommendations for capital allocation.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container section-container">
+            <h2>Skills</h2>
+            <div class="hover-card">
+                <p><strong>Financial Analysis & Economic Modeling:</strong> Corporate Finance, Regression, Sensitivity Analysis, Game Theory, NPV/IRR</p>
+                <p><strong>Data Analysis & QA:</strong> Excel, Stata, MATLAB, R, Tableau, Test Automation, Bug Tracking</p>
+                <p><strong>Database & Cloud:</strong> SQL, MySQL, Oracle, AWS, Azure</p>
+                <p><strong>Programming:</strong> C++, C, Java, Python, SQL</p>
+                <p><strong>Languages:</strong> English (Native), German (B2), Spanish (A2)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities">
+        <div class="container section-container">
+            <h2>Activities</h2>
+            <div class="hover-card">
+                <ul>
+                    <li><strong>U of M Student Ticket Group Owner:</strong> Manages 9,000+ members with automated identity verification and fraud prevention.</li>
+                    <li><strong>Online LEGO Resell Store (Owner):</strong> High-end LEGO collectibles, $1M+ revenue, officially licensed by LEGO.</li>
+                    <li><strong>Mensa:</strong> Inducted in 2022.</li>
+                    <li><strong>Finance Association:</strong> Member (2021 - 2023)</li>
+                    <li><strong>Association for Computing Machinery:</strong> Inducted in 2021.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Bishop Kammeraad</p>
+    </footer>
+
+    <script>
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeStatusDisplay = document.getElementById('theme-status-display');
+        const modeStatus = document.getElementById('mode-status');
+
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                // Light Mode
+                body.classList.add('light-mode');
+                themeStatusDisplay.textContent = 'Light';
+                modeStatus.textContent = 'OFF';
+            } else {
+                // Dark Mode
+                body.classList.remove('light-mode');
+                themeStatusDisplay.textContent = 'Dark';
+                modeStatus.textContent = 'ON';
+            }
+        });
+
+        // Smooth scrolling for directory nav
+        document.querySelectorAll('.directory-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

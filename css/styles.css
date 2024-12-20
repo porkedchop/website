@@ -1,0 +1,196 @@
+:root {
+    --bg-color-light: #f7f9fc;
+    --text-color-light: #333;
+
+    --bg-color-dark: #1d1f27;
+    --text-color-dark: #e0e0e0;
+
+    --accent-color: #4ca1af;
+    --link-color: #4ca1af;
+    --hover-color: #4ca1af;
+    --header-bg: #000;
+    --card-bg-light: #fff;
+    --card-bg-dark: #2a2d37;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color-dark);
+    color: var(--text-color-dark);
+    transition: background 0.3s, color 0.3s;
+}
+
+body.light-mode {
+    background: var(--bg-color-light);
+    color: var(--text-color-light);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.terminal-header {
+    background: var(--header-bg);
+    color: #e0e0e0;
+    padding: 20px;
+    font-family: "Courier New", Courier, monospace;
+    position: relative;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+}
+
+.ascii-art-container {
+    position: relative;
+    display: inline-block;
+}
+
+.ascii-art {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    white-space: pre;
+    font-size: 0.9rem;
+    color: transparent; /* will show gradient from background */
+    display: inline-block;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: transform 0.3s, text-shadow 0.3s;
+}
+
+.ascii-art:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.header-info {
+    margin-top: 20px;
+    color: #e0e0e0;
+}
+
+.header-info a {
+    color: var(--link-color);
+}
+
+.toggle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    margin-top: 20px;
+    min-width: 100px;
+}
+
+.toggle-label {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    color: #e0e0e0;
+    text-align: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #444;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #fff;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* When checked, move the slider */
+.switch input:checked + .slider {
+    background-color: var(--accent-color);
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 40px 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hover-card {
+    background: var(--card-bg-dark);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    cursor: default;
+}
+
+body.light-mode .hover-card {
+    background: var(--card-bg-light);
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+}
+
+body.light-mode h2 {
+    color: var(--hover-color);
+}
+body:not(.light-mode) h2 {
+    color: var(--accent-color);
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+    margin-top: 40px;
+}
