@@ -63,6 +63,8 @@
         .ascii-art-container {
             position: relative;
             display: inline-block;
+            overflow-x: auto;
+            max-width: 100%;
         }
 
         .ascii-art {
@@ -82,6 +84,13 @@
         .ascii-art:hover {
             transform: scale(1.05);
             text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        /* Smaller font on small screens */
+        @media (max-width: 600px) {
+            .ascii-art {
+                font-size: 0.7rem;
+            }
         }
 
         .header-info {
@@ -224,6 +233,7 @@
         .directory-nav a:hover {
             color: var(--hover-color);
         }
+
     </style>
 </head>
 <body>
@@ -260,12 +270,8 @@
             <p>Theme: <span id="theme-status-display">Dark</span></p>
             <p>Terminal: zsh</p>
             <p>Resume: 
-
-              <a href="images/CS-resume.pdf" target="_blank">View CS Resume</a> |
-              <a href="images/Econ-resume.pdf" target="_blank">View Econ Resume</a>
- 
-
-            </p>
+               <a href="images/CS-resume.pdf" target="_blank">View CS Resume</a> | 
+               <a href="images/Econ-resume.pdf" target="_blank">View Econ Resume</a></p>
         </div>
     </header>
 
@@ -418,38 +424,38 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Bishop Kammeraad</p>
-    </footer>
+      <p>&copy; 2024 Bishop Kammeraad</p>
+  </footer>
 
-    <script>
-        const body = document.body;
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeStatusDisplay = document.getElementById('theme-status-display');
-        const modeStatus = document.getElementById('mode-status');
+  <script>
+      const body = document.body;
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeStatusDisplay = document.getElementById('theme-status-display');
+      const modeStatus = document.getElementById('mode-status');
 
-        themeToggle.addEventListener('change', () => {
-            if (themeToggle.checked) {
-                // Light Mode
-                body.classList.add('light-mode');
-                themeStatusDisplay.textContent = 'Light';
-                modeStatus.textContent = 'OFF';
-            } else {
-                // Dark Mode
-                body.classList.remove('light-mode');
-                themeStatusDisplay.textContent = 'Dark';
-                modeStatus.textContent = 'ON';
-            }
-        });
+      themeToggle.addEventListener('change', () => {
+          if (themeToggle.checked) {
+              // Light Mode
+              body.classList.add('light-mode');
+              themeStatusDisplay.textContent = 'Light';
+              modeStatus.textContent = 'OFF';
+          } else {
+              // Dark Mode
+              body.classList.remove('light-mode');
+              themeStatusDisplay.textContent = 'Dark';
+              modeStatus.textContent = 'ON';
+          }
+      });
 
-        // Smooth scrolling for directory nav
-        document.querySelectorAll('.directory-nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
+      // Smooth scrolling for directory nav
+      document.querySelectorAll('.directory-nav a').forEach(link => {
+          link.addEventListener('click', function(e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href').substring(1);
+              const targetElement = document.getElementById(targetId);
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+          });
+      });
+  </script>
 </body>
 </html>
