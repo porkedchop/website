@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Bishop Kammeraad</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
+
     <style>
         :root {
             --bg-color-dark: #000000;
@@ -17,6 +18,7 @@
             --hover-color: #4ca1af;
         }
 
+        /* Dark mode variables */
         body:not(.light-mode) {
             --header-bg: var(--bg-color-dark);
             --education-color: #660000;
@@ -25,12 +27,13 @@
             --finance-color: #003300;
             --skills-color: #000066;
             --activities-color: #330066;
+            --awards-color: #660066;
 
             --theme-box-bg: #ffffff;
             --theme-box-text: #000000;
-            --theme-icon: "🌙";
         }
 
+        /* Light mode variables */
         body.light-mode {
             --header-bg: var(--bg-color-light);
             --education-color: #ff9999;
@@ -39,10 +42,10 @@
             --finance-color: #99ff99;
             --skills-color: #9999ff;
             --activities-color: #cc99ff;
+            --awards-color: #ff99ff;
 
             --theme-box-bg: #000000;
             --theme-box-text: #ffffff;
-            --theme-icon: "☀️";
         }
 
         body {
@@ -63,7 +66,6 @@
             color: var(--link-color);
             text-decoration: none;
         }
-
         a:hover {
             text-decoration: underline;
         }
@@ -100,7 +102,6 @@
             background-clip: text;
             vertical-align: top;
         }
-
         .ascii-art:hover {
             transform: scale(1.05);
             text-shadow: 0 0 10px rgba(255,255,255,0.5);
@@ -112,6 +113,7 @@
             }
         }
 
+        /* With four copies, move from 0% to -25% for a seamless loop */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-25%); }
@@ -126,13 +128,11 @@
             text-align: center;
             margin-top: 30px;
         }
-
         .directory-nav a {
             margin: 0 15px;
             font-weight: bold;
             transition: color 0.3s;
         }
-
         .directory-nav a:hover {
             color: var(--hover-color);
         }
@@ -152,7 +152,6 @@
             margin-top: 40px;
             margin-bottom: 60px;
         }
-
         .section-header {
             position: absolute;
             top: -22px;
@@ -161,7 +160,6 @@
             padding: 2px 8px;
             border-radius: 4px 4px 0 0;
         }
-
         .section-header h2 {
             margin: 0;
             font-weight: bold;
@@ -170,25 +168,24 @@
         #education .section-container {
             --default-color: var(--education-color);
         }
-
         #experience .section-container {
             --default-color: var(--experience-color);
         }
-
         #projects .section-container {
             --default-color: var(--projects-color);
         }
-
         #finance-projects .section-container {
             --default-color: var(--finance-color);
         }
-
         #skills .section-container {
             --default-color: var(--skills-color);
         }
-
         #activities .section-container {
             --default-color: var(--activities-color);
+        }
+        /* Awards section color */
+        #awards .section-container {
+            --default-color: var(--awards-color);
         }
 
         .hover-card {
@@ -197,7 +194,6 @@
             padding: 10px;
             transition: transform 0.3s;
         }
-
         .hover-card:hover {
             transform: translateY(-2px);
         }
@@ -211,6 +207,7 @@
             border-top: 1px solid #4ca1af;
         }
 
+        /* Always-visible theme box in top-right corner */
         .theme-box {
             position: fixed;
             top: 20px;
@@ -227,7 +224,6 @@
             transition: background 0.3s, color 0.3s;
             font-size: 1.2rem;
         }
-
         .theme-btn {
             background: transparent;
             border: none;
@@ -243,8 +239,10 @@
 </head>
 <body>
     <header class="terminal-header">
+        <!-- Scrolling ASCII marquee -->
         <div class="ascii-marquee">
             <div class="ascii-art-mover">
+                <!-- 1 -->
                 <pre class="ascii-art">
                   dP      oo        dP                       
                   88                88                       
@@ -255,6 +253,7 @@
                                                     88       
                                                     dP    
                 </pre>
+                <!-- 2 -->
                 <pre class="ascii-art">
                   dP      oo        dP                       
                   88                88                       
@@ -265,6 +264,7 @@
                                                     88       
                                                     dP    
                 </pre>
+                <!-- 3 -->
                 <pre class="ascii-art">
                   dP      oo        dP                       
                   88                88                       
@@ -275,6 +275,7 @@
                                                     88       
                                                     dP    
                 </pre>
+                <!-- 4 -->
                 <pre class="ascii-art">
                   dP      oo        dP                       
                   88                88                       
@@ -288,21 +289,26 @@
             </div>
         </div>
 
+        <!-- Header Info (inverted automatically with theme) -->
         <div class="header-info">
             <p>Bishop Kammeraad<br>
             Ann Arbor, MI | <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a> | (248) 403-1677</p>
-            <p><a href="https://www.linkedin.com/in/bishop-kammeraad-80593b204/" target="_blank">LinkedIn</a> | 
-               <a href="https://github.com/porkedchop" target="_blank">GitHub</a></p>
+            <p>
+                <a href="https://www.linkedin.com/in/bishop-kammeraad-80593b204/" target="_blank">LinkedIn</a> | 
+                <a href="https://github.com/porkedchop" target="_blank">GitHub</a>
+            </p>
             <p>OS: macOS, Linux</p>
             <p>Host: Ann Arbor, MI</p>
             <p>Theme: <span id="theme-status-display">Dark</span></p>
             <p>Terminal: zsh</p>
             <p>Resume: 
                <a href="images/CS-resume.pdf" target="_blank">View CS Resume</a> | 
-               <a href="images/Econ-resume.pdf" target="_blank">View Econ Resume</a></p>
+               <a href="images/Econ-resume.pdf" target="_blank">View Econ Resume</a>
+            </p>
         </div>
     </header>
 
+    <!-- Theme Toggle Button (always visible) -->
     <div class="theme-box">
         <button class="theme-btn" id="theme-btn">🌙</button>
     </div>
@@ -314,8 +320,10 @@
         <a href="#finance-projects">$ cd ~/finance_projects</a>
         <a href="#skills">$ cd ~/skills</a>
         <a href="#activities">$ cd ~/activities</a>
+        <a href="#awards">$ cd ~/awards</a>
     </nav>
 
+    <!-- Education Section -->
     <section id="education">
         <div class="container section-container">
             <div class="section-header">
@@ -324,11 +332,13 @@
             <div class="hover-card">
                 <p><strong>University of Michigan - Ann Arbor</strong> (Sep 2020 to Aug 2025)</p>
                 <p>BS in Computer Science, BS in Economics</p>
-                <p><em>Coursework:</em> Data Structures and Algorithms, UI Development, Software Engineering, Database Management Systems, Econometrics, Micro & Macro Economic Theory, Corporate Finance, Money & Banking, Game Theory</p>
+                <p><em>Coursework:</em> Data Structures and Algorithms, UI Development, Software Engineering, Database Management Systems, 
+                Econometrics, Micro & Macro Economic Theory, Corporate Finance, Money & Banking, Game Theory</p>
             </div>
         </div>
     </section>
 
+    <!-- Experience Section -->
     <section id="experience">
         <div class="container section-container">
             <div class="section-header">
@@ -364,34 +374,50 @@
         </div>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects">
         <div class="container section-container">
             <div class="section-header">
                 <h2>$ cat projects.txt</h2>
             </div>
+
+            <!-- RenderCV Open-Source Project (Expanded) -->
             <div class="hover-card">
                 <h3>RenderCV Open-Source Project</h3>
                 <ul>
-                    <li>Resolved bugs, implemented user-friendly features, merged into main repository.</li>
-                    <li>Ensured code quality and usability through close collaboration with maintainers.</li>
+                    <li>Enhanced localization features by adding robust support for Chinese characters, ensuring accurate rendering for multilingual resumes.</li>
+                    <li>Researched and integrated relevant fonts, glyphs, and fallback strategies so Chinese text displays properly without breaking layout or formatting.</li>
+                    <li>Collaborated closely with maintainers and international users to gather feedback, run tests, and resolve edge cases, providing a seamless user experience for non-Latin scripts.</li>
+                    <li>Contributed to the project’s code quality by reviewing pull requests, adding test coverage, and documenting best practices for multilingual resume generation.</li>
+                    <li>Learned advanced PDF rendering techniques, text encoding, and design considerations for multi-lingual text while aligning code standards to the project’s guidelines.</li>
                 </ul>
             </div>
+
+            <!-- Among Us Game Engine -->
             <div class="hover-card">
                 <h3>Among Us Game Engine</h3>
                 <ul>
                     <li>Implemented a real-time engine supporting multiplayer interactions and tasks.</li>
                     <li>Utilized hash maps, priority queues, and graph traversal for efficiency.</li>
-                    <li>Enhanced performance and responsiveness via custom memory management and async processing.</li>
+                    <li>Enhanced performance and responsiveness via custom memory management and asynchronous processing.</li>
                 </ul>
             </div>
+
+            <!-- Log Manager (LogMan) (Expanded) -->
             <div class="hover-card">
                 <h3>Log Manager (LogMan)</h3>
                 <ul>
-                    <li>Built a log management tool for large-scale logs with efficient storage and querying.</li>
-                    <li>Used indexed lists and hash maps for sorting and searching logs.</li>
-                    <li>Integrated filters, sorting options, and excerpts for a seamless user experience.</li>
+                    <li>Designed a robust log-processing pipeline, ingesting logs from multiple sources and unifying formats for consistent storage and retrieval.</li>
+                    <li>Implemented data structures (e.g., balanced trees or indexed arrays) to enable precise time-based and content-based lookups at scale.</li>
+                    <li>Developed advanced filtering and sorting features (by timestamp, severity, and keywords) to isolate relevant events from thousands of concurrent log streams.</li>
+                    <li>Managed concurrency control for simultaneous read/write operations, ensuring system stability under high-volume logging bursts.</li>
+                    <li>Enhanced usability with pagination, inline highlights, and excerpted results, facilitating swift navigation of critical logs and error reports.</li>
+                    <li>Conducted performance profiling—evaluating throughput, memory usage, and query response times—to validate scalability in production-like scenarios.</li>
+                    <li>Documented best practices for ingestion, indexing, and maintenance, providing a roadmap for future extensions or customizations.</li>
                 </ul>
             </div>
+
+            <!-- AI-Powered Ticket Negotiation Tool -->
             <div class="hover-card">
                 <h3>AI-Powered Ticket Negotiation Tool</h3>
                 <ul>
@@ -402,6 +428,7 @@
         </div>
     </section>
 
+    <!-- Finance Projects Section -->
     <section id="finance-projects">
         <div class="container section-container">
             <div class="section-header">
@@ -426,6 +453,7 @@
         </div>
     </section>
 
+    <!-- Skills Section -->
     <section id="skills">
         <div class="container section-container">
             <div class="section-header">
@@ -441,6 +469,7 @@
         </div>
     </section>
 
+    <!-- Activities Section -->
     <section id="activities">
         <div class="container section-container">
             <div class="section-header">
@@ -458,37 +487,57 @@
         </div>
     </section>
 
-  <footer>
-    <p>&copy; 2024 Bishop Kammeraad</p>
-</footer>
+    <!-- Awards Section -->
+    <section id="awards">
+        <div class="container section-container">
+            <div class="section-header">
+                <h2>$ cat awards.txt</h2>
+            </div>
+            <div class="hover-card">
+                <ul>
+                    <li>Dean's List (4 semesters)</li>
+                    <li>Top Honors from Walled Lake Northern High School</li>
+                    <li>Top 5% of high school class</li>
+                    <li>2nd grade spelling champ for school (lol)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<script>
-    const body = document.body;
-    const themeStatusDisplay = document.getElementById('theme-status-display');
-    const themeBtn = document.getElementById('theme-btn');
+    <footer>
+        <p>&copy; 2024 Bishop Kammeraad</p>
+    </footer>
 
-    function updateTheme() {
-        if (body.classList.contains('light-mode')) {
-            body.classList.remove('light-mode');
-            themeStatusDisplay.textContent = 'Dark';
-            themeBtn.textContent = '🌙'; 
-        } else {
-            body.classList.add('light-mode');
-            themeStatusDisplay.textContent = 'Light';
-            themeBtn.textContent = '☀️'; 
+    <script>
+        const body = document.body;
+        const themeStatusDisplay = document.getElementById('theme-status-display');
+        const themeBtn = document.getElementById('theme-btn');
+
+        function updateTheme() {
+            if (body.classList.contains('light-mode')) {
+                // Switch to dark mode
+                body.classList.remove('light-mode');
+                themeStatusDisplay.textContent = 'Dark';
+                themeBtn.textContent = '🌙'; 
+            } else {
+                // Switch to light mode
+                body.classList.add('light-mode');
+                themeStatusDisplay.textContent = 'Light';
+                themeBtn.textContent = '☀️'; 
+            }
         }
-    }
 
-    themeBtn.addEventListener('click', updateTheme);
+        themeBtn.addEventListener('click', updateTheme);
 
-    document.querySelectorAll('.directory-nav a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            targetElement.scrollIntoView({ behavior: 'smooth' });
+        // Smooth scrolling for directory links
+        document.querySelectorAll('.directory-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
