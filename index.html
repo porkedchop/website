@@ -19,13 +19,13 @@
 
         body:not(.light-mode) {
             --header-bg: var(--bg-color-dark);
-            --education-color: #660000;        
-            --experience-color: #663300;       
-            --projects-color: #666600;         
-            --finance-color: #003300;          
-            --skills-color: #000066;           
-            --activities-color: #330066;       
-            
+            --education-color: #660000;
+            --experience-color: #663300;
+            --projects-color: #666600;
+            --finance-color: #003300;
+            --skills-color: #000066;
+            --activities-color: #330066;
+
             --theme-box-bg: #ffffff;
             --theme-box-text: #000000;
             --theme-icon: "🌙";
@@ -33,13 +33,13 @@
 
         body.light-mode {
             --header-bg: var(--bg-color-light);
-            --education-color: #ff9999;        
-            --experience-color: #ffcc99;       
-            --projects-color: #ffff99;         
-            --finance-color: #99ff99;          
-            --skills-color: #9999ff;           
-            --activities-color: #cc99ff;       
-            
+            --education-color: #ff9999;
+            --experience-color: #ffcc99;
+            --projects-color: #ffff99;
+            --finance-color: #99ff99;
+            --skills-color: #9999ff;
+            --activities-color: #cc99ff;
+
             --theme-box-bg: #000000;
             --theme-box-text: #ffffff;
             --theme-icon: "☀️";
@@ -70,10 +70,9 @@
 
         .terminal-header {
             background: var(--header-bg);
-            color: var(--text-color-dark);
             position: relative;
             padding-bottom: 60px;
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s;
         }
 
         .ascii-marquee {
@@ -166,7 +165,6 @@
         .section-header h2 {
             margin: 0;
             font-weight: bold;
-            color: var(--text-color-dark);
         }
 
         #education .section-container {
@@ -460,37 +458,37 @@
         </div>
     </section>
 
-    <footer>
-      <p>&copy; 2024 Bishop Kammeraad</p>
-  </footer>
+  <footer>
+    <p>&copy; 2024 Bishop Kammeraad</p>
+</footer>
 
-  <script>
-      const body = document.body;
-      const themeStatusDisplay = document.getElementById('theme-status-display');
-      const themeBtn = document.getElementById('theme-btn');
+<script>
+    const body = document.body;
+    const themeStatusDisplay = document.getElementById('theme-status-display');
+    const themeBtn = document.getElementById('theme-btn');
 
-      function updateTheme() {
-          if (body.classList.contains('light-mode')) {
-              body.classList.remove('light-mode');
-              themeStatusDisplay.textContent = 'Dark';
-              themeBtn.textContent = '🌙'; 
-          } else {
-              body.classList.add('light-mode');
-              themeStatusDisplay.textContent = 'Light';
-              themeBtn.textContent = '☀️'; 
-          }
-      }
+    function updateTheme() {
+        if (body.classList.contains('light-mode')) {
+            body.classList.remove('light-mode');
+            themeStatusDisplay.textContent = 'Dark';
+            themeBtn.textContent = '🌙'; 
+        } else {
+            body.classList.add('light-mode');
+            themeStatusDisplay.textContent = 'Light';
+            themeBtn.textContent = '☀️'; 
+        }
+    }
 
-      themeBtn.addEventListener('click', updateTheme);
+    themeBtn.addEventListener('click', updateTheme);
 
-      document.querySelectorAll('.directory-nav a').forEach(link => {
-          link.addEventListener('click', function(e) {
-              e.preventDefault();
-              const targetId = this.getAttribute('href').substring(1);
-              const targetElement = document.getElementById(targetId);
-              targetElement.scrollIntoView({ behavior: 'smooth' });
-          });
-      });
-  </script>
+    document.querySelectorAll('.directory-nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
 </body>
 </html>
