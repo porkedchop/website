@@ -1,13 +1,20 @@
 /* ====================================================================
-   sections.css — per-section visual treatments
+   sections.css — per-section content treatments
    ==================================================================== */
 
 /* ----- /now ----- */
-.now-list { list-style: none; padding: 0; margin: 0; }
-.now-list li {
-    padding: 6px 0 6px 22px;
-    position: relative;
+.now-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
 }
+.now-list li {
+    padding: 8px 0 8px 24px;
+    position: relative;
+    border-bottom: 1px dashed color-mix(in srgb, var(--border) 80%, transparent);
+}
+.now-list li:last-child { border-bottom: none; }
 .now-list li::before {
     content: "▸";
     position: absolute;
@@ -16,9 +23,13 @@
 }
 
 /* ----- /experience ----- */
-.xp + .xp { margin-top: 16px; }
+.xp {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+}
+.xp:last-of-type { border-bottom: none; }
 .xp-head h3 {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
     color: var(--fg);
 }
 .xp-role { color: var(--fg-muted); font-weight: 400; }
@@ -30,58 +41,42 @@
     color: var(--fg-muted);
 }
 
-/* "Previously" — earlier roles, broader summary */
 .xp-prev {
     margin-top: 22px;
-    padding-top: 18px;
+    padding-top: 22px;
     border-top: 1px dashed var(--border);
 }
 .xp-prev-title {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: var(--accent);
     letter-spacing: 0.04em;
-    margin: 0 0 10px;
+    margin: 0 0 12px;
 }
-.xp-prev-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 10px;
-}
+.xp-prev-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
 .xp-prev-list li {
     padding: 10px 12px;
     border: 1px solid var(--border);
-    border-radius: 5px;
+    border-radius: 4px;
     background: var(--bg-card);
     font-size: 0.92rem;
 }
-.xp-prev-meta {
-    color: var(--fg-muted);
-    font-size: 0.82rem;
-    margin-left: 6px;
-}
-.xp-prev-body {
-    color: var(--fg-muted);
-    font-size: 0.88rem;
-}
+.xp-prev-meta { color: var(--fg-muted); font-size: 0.82rem; margin-left: 6px; }
+.xp-prev-body { color: var(--fg-muted); font-size: 0.88rem; }
 
 /* ----- /projects ----- */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    margin-top: 8px;
 }
 @media (max-width: 720px) {
     .project-grid { grid-template-columns: 1fr; }
 }
-
 .project-tile {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 4px;
     padding: 18px 18px 16px;
     transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
     display: flex;
@@ -114,7 +109,6 @@
     font-size: 1rem;
     color: var(--fg);
     margin: 0;
-    letter-spacing: 0.01em;
 }
 .project-tags {
     list-style: none;
@@ -152,14 +146,15 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    margin-top: 8px;
 }
 @media (max-width: 640px) {
     .skill-grid { grid-template-columns: 1fr; }
 }
 .skill-card {
     padding: 14px 16px 12px;
-    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-card);
 }
 .skill-card h3 {
     font-size: 0.92rem;
@@ -168,14 +163,14 @@
     letter-spacing: 0.02em;
 }
 .skill-card p { margin: 0; font-size: 0.92rem; color: var(--fg); }
-.skill-card:nth-child(2) h3 { color: var(--accent-2); }
-.skill-card:nth-child(3) h3 { color: var(--accent-3); }
-.skill-card:nth-child(4) h3 { color: var(--success); }
-.skill-card:nth-child(5) h3 { color: var(--accent); }
-.skill-card:nth-child(6) h3 { color: var(--fg-muted); }
+.skill-card:nth-child(2) h3,
+.skill-card:nth-child(4) h3 { color: var(--accent-2); }
 
 /* ----- /education ----- */
-.course-label { margin: 10px 0 4px; }
+.edu-card {
+    padding: 16px 0;
+}
+.course-label { margin: 14px 0 4px; }
 .course-grid {
     list-style: none;
     padding: 0;
@@ -201,11 +196,7 @@
     color: var(--accent);
     font-weight: 700;
 }
-.course-tag {
-    color: var(--fg-muted);
-    font-size: 0.78rem;
-    margin-left: 4px;
-}
+.course-tag { color: var(--fg-muted); font-size: 0.78rem; margin-left: 4px; }
 
 /* ----- /press ----- */
 .press-quote {
@@ -213,7 +204,7 @@
     padding: 18px 22px;
     border-left: 3px solid var(--accent-2);
     background: var(--bg-card);
-    border-radius: 0 6px 6px 0;
+    border-radius: 0 4px 4px 0;
 }
 .press-quote blockquote {
     margin: 0;
@@ -229,7 +220,23 @@
 .press-quote cite { font-style: normal; color: var(--fg); }
 .press-extra { margin-top: 14px; color: var(--fg-muted); font-size: 0.9rem; }
 
-/* ----- Terminal overlay (Konami) ----- */
+/* ----- /activities ----- */
+.activities-list { list-style: none; padding: 0; margin: 0; }
+.activities-list li {
+    padding: 8px 0 8px 24px;
+    position: relative;
+    border-bottom: 1px dashed color-mix(in srgb, var(--border) 80%, transparent);
+}
+.activities-list li:last-child { border-bottom: none; }
+.activities-list li::before {
+    content: "·";
+    position: absolute;
+    left: 4px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* ----- terminal overlay (konami) ----- */
 .terminal-overlay {
     position: fixed;
     inset: 0;
@@ -265,27 +272,17 @@
     font-size: 0.78rem;
     color: #93a0aa;
 }
-.terminal-dot {
-    width: 10px; height: 10px; border-radius: 50%;
-    display: inline-block;
-}
+.terminal-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 .terminal-dot--r { background: #ff5f56; }
 .terminal-dot--y { background: #ffbd2e; }
 .terminal-dot--g { background: #27c93f; }
 .terminal-title { flex: 1; text-align: center; }
-.terminal-close {
-    background: transparent;
-    border: none;
-    color: #93a0aa;
-    cursor: pointer;
-    font-size: 1.1rem;
-    line-height: 1;
-}
+.terminal-close { background: transparent; border: none; color: #93a0aa; cursor: pointer; font-size: 1.1rem; line-height: 1; }
 .terminal-output {
     margin: 0;
     padding: 14px;
     font-size: 0.85rem;
-    color: #b6e3c9;
+    color: var(--accent);
     flex: 1;
     overflow-y: auto;
     white-space: pre-wrap;
@@ -300,10 +297,7 @@
     border-top: 1px solid #2a2f38;
     background: #0c0d11;
 }
-.terminal-prompt {
-    color: var(--accent);
-    font-weight: 700;
-}
+.terminal-prompt { color: var(--accent); font-weight: 700; }
 .terminal-input {
     flex: 1;
     background: transparent;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Bishop Kammeraad — Go-to-Market Engineer at Revivn, Co-Founder of Student Section." />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#0a0a0a" />
     <meta property="og:title" content="Bishop Kammeraad" />
     <meta property="og:description" content="GTM engineering at Revivn. Co-founder, Student Section. UMich CS + Econ '25." />
     <meta property="og:type" content="website" />
@@ -13,7 +13,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" />
 
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/sections.css" />
@@ -27,31 +27,29 @@
         <button id="boot-skip" class="boot-skip" type="button">[skip ⏎]</button>
     </div>
 
-    <!-- Atmosphere layer -->
-    <canvas id="atmosphere" class="atmosphere" aria-hidden="true"></canvas>
-
-    <!-- Snake: ASCII chain that follows scroll with sinuous lag -->
-    <canvas id="snake" class="snake" aria-hidden="true"></canvas>
-
     <!-- Theme toggle -->
     <div class="theme-box" role="group" aria-label="Theme">
         <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle theme">🌙</button>
     </div>
 
-    <!-- HERO -->
+    <!-- HERO: reaction-diffusion ASCII canvas behind, BISHOP block letters on top -->
     <header class="hero">
-        <canvas id="hero-shader" class="hero-shader" aria-hidden="true"></canvas>
+        <canvas id="rd-canvas" class="rd-canvas" aria-hidden="true"></canvas>
         <div class="hero-content">
-            <h1 class="hero-name">
-                <span class="hero-prompt">user@porkedchop:~$</span>
-                <span class="hero-typed" id="hero-typed">whoami</span><span class="hero-caret">▊</span>
-            </h1>
-            <p class="hero-tagline">
-                Bishop Kammeraad — go-to-market engineer · co-founder · operator.
-            </p>
+            <p class="kicker">$ whoami</p>
+            <pre class="hero-name" aria-label="BISHOP">██████╗ ██╗███████╗██╗  ██╗ ██████╗ ██████╗
+██╔══██╗██║██╔════╝██║  ██║██╔═══██╗██╔══██╗
+██████╔╝██║███████╗███████║██║   ██║██████╔╝
+██╔══██╗██║╚════██║██╔══██║██║   ██║██╔═══╝
+██████╔╝██║███████║██║  ██║╚██████╔╝██║
+╚═════╝ ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝</pre>
+            <p class="hero-rule" aria-hidden="true">─── × ─── × ─── × ─── × ───</p>
+            <p class="hero-tagline">Bishop Kammeraad — go-to-market engineer · co-founder · operator.</p>
             <p class="hero-links">
-                <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a> ·
-                <a href="https://www.linkedin.com/in/bishop-kammeraad-80593b204/" target="_blank" rel="noopener">linkedin</a> ·
+                <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a>
+                <span class="sep">/</span>
+                <a href="https://www.linkedin.com/in/bishop-kammeraad-80593b204/" target="_blank" rel="noopener">linkedin</a>
+                <span class="sep">/</span>
                 <a href="https://github.com/porkedchop" target="_blank" rel="noopener">github</a>
             </p>
         </div>
@@ -70,35 +68,32 @@
     <main class="container">
 
         <!-- NOW -->
-        <section id="now" class="section section--now">
-            <div class="section-container">
-                <pre class="accent accent--ne" aria-hidden="true">▊
-   __
-  /  \
- /    \</pre>
-                <header class="section-header"><h2>$ cat now.txt</h2></header>
-                <div class="hover-card">
-                    <ul class="now-list">
-                        <li>Building Claude-powered eval harnesses, ICP scoring, and prospect-pipeline automations at Revivn (Brooklyn).</li>
-                        <li>Shipping Student Section features for the fall sports window.</li>
-                        <li>Side-quest: a voice-driven pocket briefer on M5 Cardputer hardware.</li>
-                        <li>Always reachable — <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a>.</li>
-                    </ul>
-                </div>
+        <section id="now" class="section">
+            <header class="section-head">
+                <p class="kicker">$ cat now.txt</p>
+                <h2 class="display">N O W</h2>
+                <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
+            </header>
+            <div class="section-body">
+                <ul class="now-list">
+                    <li>Building Claude-powered eval harnesses, ICP scoring, and prospect-pipeline automations at Revivn (Brooklyn).</li>
+                    <li>Shipping Student Section features for the fall sports window.</li>
+                    <li>Side-quest: a voice-driven pocket briefer on M5 Cardputer hardware.</li>
+                    <li>Always reachable — <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a>.</li>
+                </ul>
             </div>
         </section>
 
         <!-- EXPERIENCE -->
-        <section id="experience" class="section section--experience">
-            <div class="section-container">
-                <pre class="accent accent--sw" aria-hidden="true">┌─────┐
-│ ▓▓▓ │
-│ ░░░ │
-│ ··· │
-└─────┘</pre>
-                <header class="section-header"><h2>$ cat experience.txt</h2></header>
+        <section id="experience" class="section">
+            <header class="section-head">
+                <p class="kicker">$ cat experience.txt</p>
+                <h2 class="display">E X P E R I E N C E</h2>
+                <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
+            </header>
+            <div class="section-body">
 
-                <article class="hover-card xp">
+                <article class="xp">
                     <header class="xp-head">
                         <h3>Revivn <span class="xp-role">— Go-to-Market Engineer</span></h3>
                         <p class="xp-meta">Brooklyn, NY · Feb 2026 – Present</p>
@@ -111,7 +106,7 @@
                     </ul>
                 </article>
 
-                <article class="hover-card xp">
+                <article class="xp">
                     <header class="xp-head">
                         <h3>Student Section <span class="xp-role">— Co-Founder &amp; Product Engineer</span></h3>
                         <p class="xp-meta">Ann Arbor, MI · Oct 2024 – Present</p>
@@ -129,7 +124,7 @@
                     </p>
                 </article>
 
-                <article class="hover-card xp">
+                <article class="xp">
                     <header class="xp-head">
                         <h3>Bishop's Bricks <span class="xp-role">— Founder &amp; Operator</span></h3>
                         <p class="xp-meta">Remote · Jan 2014 – Present</p>
@@ -141,7 +136,6 @@
                     </ul>
                 </article>
 
-                <!-- Previously -->
                 <div class="xp-prev">
                     <h3 class="xp-prev-title">$ ls ~/experience/previously</h3>
                     <ul class="xp-prev-list">
@@ -163,18 +157,17 @@
         </section>
 
         <!-- PROJECTS -->
-        <section id="projects" class="section section--projects">
-            <div class="section-container">
-                <pre class="accent accent--ne" aria-hidden="true">{ [ ( ) ] }
- [ { } ]
-   ( )</pre>
-                <header class="section-header"><h2>$ ls -la ~/projects</h2></header>
+        <section id="projects" class="section">
+            <header class="section-head">
+                <p class="kicker">$ ls -la ~/projects</p>
+                <h2 class="display">P R O J E C T S</h2>
+                <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
+            </header>
+            <div class="section-body">
                 <div class="project-grid">
 
                     <article class="project-tile">
-                        <header class="project-head">
-                            <h3>devils-advocate-mcp</h3>
-                        </header>
+                        <header class="project-head"><h3>devils-advocate-mcp</h3></header>
                         <ul class="project-tags">
                             <li>MCP</li><li>TypeScript</li><li>Anthropic SDK</li>
                         </ul>
@@ -182,9 +175,7 @@
                     </article>
 
                     <article class="project-tile">
-                        <header class="project-head">
-                            <h3>claude-pocket-bot</h3>
-                        </header>
+                        <header class="project-head"><h3>claude-pocket-bot</h3></header>
                         <ul class="project-tags">
                             <li>MicroPython</li><li>ESP32-S3</li><li>Whisper</li>
                         </ul>
@@ -192,9 +183,7 @@
                     </article>
 
                     <article class="project-tile">
-                        <header class="project-head">
-                            <h3>healthcare-ml-toolbox</h3>
-                        </header>
+                        <header class="project-head"><h3>healthcare-ml-toolbox</h3></header>
                         <ul class="project-tags">
                             <li>Python</li><li>scikit-learn</li><li>PostgreSQL</li><li>Railway</li>
                         </ul>
@@ -202,9 +191,7 @@
                     </article>
 
                     <article class="project-tile">
-                        <header class="project-head">
-                            <h3>redwood-cleaning-co</h3>
-                        </header>
+                        <header class="project-head"><h3>redwood-cleaning-co</h3></header>
                         <ul class="project-tags">
                             <li>Next.js 15</li><li>React 19</li><li>Tailwind</li><li>RSC</li>
                         </ul>
@@ -213,9 +200,7 @@
                     </article>
 
                     <article class="project-tile project-tile--private">
-                        <header class="project-head">
-                            <h3>gtm-tooling <span class="lock">🔒</span></h3>
-                        </header>
+                        <header class="project-head"><h3>gtm-tooling <span class="lock">🔒</span></h3></header>
                         <ul class="project-tags">
                             <li>Python</li><li>Anthropic SDK</li><li>Notion</li><li>multi-source enrichment</li>
                         </ul>
@@ -227,37 +212,35 @@
         </section>
 
         <!-- SKILLS -->
-        <section id="skills" class="section section--skills">
-            <div class="section-container">
-                <pre class="accent accent--sw" aria-hidden="true">  ╱╲
- ╱  ╲
-╱ ▓▓ ╲
-╲ ▓▓ ╱
- ╲  ╱
-  ╲╱</pre>
-                <header class="section-header"><h2>$ cat engineering_and_research.txt</h2></header>
+        <section id="skills" class="section">
+            <header class="section-head">
+                <p class="kicker">$ cat engineering_and_research.txt</p>
+                <h2 class="display">S K I L L S</h2>
+                <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
+            </header>
+            <div class="section-body">
                 <div class="skill-grid">
-                    <div class="hover-card skill-card">
+                    <div class="skill-card">
                         <h3>Languages — production</h3>
                         <p>Python · TypeScript · JavaScript · C++ · SQL</p>
                     </div>
-                    <div class="hover-card skill-card">
+                    <div class="skill-card">
                         <h3>Languages — academic + side</h3>
                         <p>C · Java · Swift · Bash · x86 Assembly</p>
                     </div>
-                    <div class="hover-card skill-card">
+                    <div class="skill-card">
                         <h3>LLM Engineering</h3>
                         <p>Claude API (sampling, batch, structured prompts) · MCP server design · prompt design and iteration with regression gates · eval-harness construction.</p>
                     </div>
-                    <div class="hover-card skill-card">
+                    <div class="skill-card">
                         <h3>Research Methodology</h3>
                         <p>Adversarial test-case design · multi-stage grader systems · regression-detection across prompt versions · Wilson confidence intervals on small-N empirical claims · multi-agent governance with self-critique loops.</p>
                     </div>
-                    <div class="hover-card skill-card">
+                    <div class="skill-card">
                         <h3>Production Engineering</h3>
                         <p>APIs · web scraping · workflow orchestration · data-enrichment pipelines · Flask + Okta SSO + role-based access · Railway deployment with build-stamped verification.</p>
                     </div>
-                    <div class="hover-card skill-card">
+                    <div class="skill-card">
                         <h3>Spoken</h3>
                         <p>English (native) · German (B2) · Spanish (A2)</p>
                     </div>
@@ -266,10 +249,14 @@
         </section>
 
         <!-- EDUCATION -->
-        <section id="education" class="section section--education">
-            <div class="section-container">
-                <header class="section-header"><h2>$ cat education.txt</h2></header>
-                <div class="hover-card">
+        <section id="education" class="section">
+            <header class="section-head">
+                <p class="kicker">$ cat education.txt</p>
+                <h2 class="display">E D U C A T I O N</h2>
+                <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
+            </header>
+            <div class="section-body">
+                <div class="edu-card">
                     <p><strong>University of Michigan — Ann Arbor</strong></p>
                     <p>BS in Computer Science, BS in Economics — June 2025</p>
                     <p class="course-label"><em>Relevant coursework:</em></p>
@@ -293,14 +280,13 @@
         </section>
 
         <!-- PRESS -->
-        <section id="press" class="section section--press">
-            <div class="section-container">
-                <pre class="accent accent--ne" aria-hidden="true">  ~~~~
- ~    ~
-~  ··  ~
- ~    ~
-  ~~~~</pre>
-                <header class="section-header"><h2>$ cat press.txt</h2></header>
+        <section id="press" class="section">
+            <header class="section-head">
+                <p class="kicker">$ cat press.txt</p>
+                <h2 class="display">P R E S S</h2>
+                <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
+            </header>
+            <div class="section-body">
                 <figure class="press-quote">
                     <blockquote>
                         "A model for student-built innovation on campus."
@@ -318,26 +304,27 @@
         </section>
 
         <!-- ACTIVITIES -->
-        <section id="activities" class="section section--activities">
-            <div class="section-container">
-                <header class="section-header"><h2>$ cat activities.txt</h2></header>
-                <div class="hover-card">
-                    <ul>
-                        <li><strong>Mensa</strong> — inducted 2022.</li>
-                        <li><strong>Association for Computing Machinery</strong> — inducted 2021.</li>
-                        <li><strong>Neuroscience Club</strong> — 2021–2023.</li>
-                        <li><strong>Finance Association</strong> — 2021–2023.</li>
-                        <li><strong>EMT</strong> (Universal EMS, Detroit) — Jun 2021–Aug 2021.</li>
-                    </ul>
-                </div>
+        <section id="activities" class="section">
+            <header class="section-head">
+                <p class="kicker">$ cat activities.txt</p>
+                <h2 class="display">A C T I V I T I E S</h2>
+                <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
+            </header>
+            <div class="section-body">
+                <ul class="activities-list">
+                    <li><strong>Mensa</strong> — inducted 2022.</li>
+                    <li><strong>Association for Computing Machinery</strong> — inducted 2021.</li>
+                    <li><strong>Neuroscience Club</strong> — 2021–2023.</li>
+                    <li><strong>Finance Association</strong> — 2021–2023.</li>
+                    <li><strong>EMT</strong> (Universal EMS, Detroit) — Jun 2021–Aug 2021.</li>
+                </ul>
             </div>
         </section>
 
     </main>
 
     <footer class="site-footer">
-        <pre class="footer-ascii" id="footer-donut" aria-hidden="true"></pre>
-        <p>vanilla JS · a flow field, a fragment shader, and a serpent on the side.</p>
+        <p>typography · reaction-diffusion · vanilla js.</p>
         <p>press <kbd>↑</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>b</kbd> <kbd>a</kbd> for a shell.</p>
         <p>&copy; <span id="year"></span> Bishop Kammeraad</p>
     </footer>

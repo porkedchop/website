@@ -3,8 +3,8 @@
 const LINES = [
     { delay: 0,   text: "[ OK ] mounting /dev/identity ........ Bishop Kammeraad" },
     { delay: 60,  text: "[ OK ] loading /etc/profile ........... LLM eng, MCP, evals" },
-    { delay: 60,  text: "[ OK ] initializing flow-field ........ atmosphere.cnv" },
-    { delay: 60,  text: "[ OK ] compiling fragment shader ...... hero.glsl" },
+    { delay: 60,  text: "[ OK ] seeding reaction-diffusion ..... gray-scott (f=0.054, k=0.062)" },
+    { delay: 60,  text: "[ OK ] mounting typographic spine ..... display.heading[7]" },
     { delay: 60,  text: "[ OK ] starting view-timeline ......... scroll.api" },
     { delay: 60,  text: "[ OK ] registering konami listener .... ↑↑↓↓←→←→ba" },
     { delay: 80,  text: "" },

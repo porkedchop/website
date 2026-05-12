@@ -1,15 +1,13 @@
-// main.js — orchestrator: wires boot, atmosphere, hero shader, theme, nav, cursor, terminal.
+// main.js — orchestrator. Boot, theme, reaction-diffusion hero, SplitText display headings, Konami shell.
 
 import { runBoot } from "./effects/boot.js";
-import { startFlowField } from "./effects/flow-field.js";
-import { startFlowTapestry } from "./effects/flow-tapestry.js";
-import { startCursor } from "./effects/cursor.js";
+import { startReactionDiffusion } from "./effects/reaction-diffusion.js";
 import { startTerminal } from "./effects/terminal.js";
-import { startSnakePath } from "./effects/snake-path.js";
+import { initSplitText } from "./effects/split-text.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// year
+// year stamp
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
@@ -17,7 +15,6 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 (function initTheme() {
     const saved = localStorage.getItem("theme");
     if (saved === "light") document.body.classList.add("light-mode");
-
     const btn = document.getElementById("theme-btn");
     function update() {
         const isLight = document.body.classList.contains("light-mode");
@@ -34,36 +31,21 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
 // kick off boot, then mount the rest after it fades
 const bootEl = document.getElementById("boot");
-runBoot(bootEl, {
-    reducedMotion,
-    onDone: mountAll,
-});
+runBoot(bootEl, { reducedMotion, onDone: mountAll });
 
 function mountAll() {
-    // hero — generative flow tapestry (replaces the rotating ascii torus)
-    const heroCanvas = document.getElementById("hero-shader");
-    if (heroCanvas) {
-        startFlowTapestry(heroCanvas, { reducedMotion });
-    }
+    // hero piece — reaction-diffusion ASCII
+    const rdCanvas = document.getElementById("rd-canvas");
+    if (rdCanvas) startReactionDiffusion(rdCanvas, { reducedMotion });
 
-    // atmosphere flow-field (background drifting glyphs)
-    const atmosphereCanvas = document.getElementById("atmosphere");
-    if (atmosphereCanvas) {
-        startFlowField(atmosphereCanvas, { reducedMotion });
-    }
+    // konami terminal (donut command no longer renders a default; opt-in only)
+    startTerminal({ donutEl: null });
 
-    // cursor trail (skip on touch + reduced motion)
-    startCursor({ disabled: reducedMotion });
+    // split + reveal display headings
+    initSplitText(".display", { reducedMotion });
 
-    // konami terminal
-    startTerminal({ donutEl: document.getElementById("footer-donut") });
-
-    // snake: ASCII chain that follows scroll, sweeping horizontally as you read
-    startSnakePath(document.getElementById("snake"), { reducedMotion });
-
-    const sections = Array.from(document.querySelectorAll(".section"));
-
-    // section reveal via IntersectionObserver
+    // section-body reveal via IntersectionObserver
+    const sections = document.querySelectorAll(".section");
     if ("IntersectionObserver" in window && !reducedMotion) {
         const obs = new IntersectionObserver(
             (entries) => {
@@ -92,9 +74,6 @@ function mountAll() {
         });
     });
 
-    // type the "whoami" command into the hero on first paint
-    typeHero();
-
     // smooth-scroll the nav with a View-Transition wrap when supported
     document.querySelectorAll(".directory-nav a").forEach((a) => {
         a.addEventListener("click", (e) => {
@@ -111,38 +90,4 @@ function mountAll() {
             history.replaceState(null, "", "#" + id);
         });
     });
-}
-
-function typeHero() {
-    const target = document.getElementById("hero-typed");
-    if (!target) return;
-    const phrases = ["whoami", "cat about.txt", "ls ~/projects", "now-playing"];
-    let pi = 0;
-    let stage = "typing";
-    let ci = phrases[pi].length;
-    target.textContent = phrases[pi];
-
-    // start cycling after a beat
-    setTimeout(() => {
-        if (reducedMotion) return;
-        setInterval(() => {
-            if (stage === "typing") {
-                if (ci < phrases[pi].length) {
-                    ci++;
-                    target.textContent = phrases[pi].slice(0, ci);
-                } else {
-                    stage = "hold";
-                    setTimeout(() => (stage = "erasing"), 1700);
-                }
-            } else if (stage === "erasing") {
-                if (ci > 0) {
-                    ci--;
-                    target.textContent = phrases[pi].slice(0, ci);
-                } else {
-                    pi = (pi + 1) % phrases.length;
-                    stage = "typing";
-                }
-            }
-        }, 80);
-    }, 1500);
 }

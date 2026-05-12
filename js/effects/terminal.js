@@ -9,8 +9,6 @@ const HELP = `available commands:
   whoami               who is this guy
   links                show all my links
   theme [dark|light]   toggle or set theme
-  donut                spawn a rotating ASCII donut in the footer
-  art <0..1>           set atmosphere opacity (e.g. art 0.6)
   clear                clear the screen
   exit                 close the shell`;
 
@@ -86,18 +84,9 @@ export function startTerminal({ donutEl } = {}) {
                 print("theme: " + (document.body.classList.contains("light-mode") ? "light" : "dark"));
                 break;
             }
-            case "donut": {
-                if (donutTimer) { clearInterval(donutTimer); donutTimer = null; if (donutEl) donutEl.textContent = ""; print("donut: off"); }
-                else { donutTimer = spawnDonut(donutEl); print("donut: spinning in the footer."); }
+            case "donut":
+                print("the donut sailed in iter 2. ascii-rendered tori are tired.");
                 break;
-            }
-            case "art": {
-                const v = Math.max(0, Math.min(1, parseFloat(arg)));
-                if (Number.isNaN(v)) { print("usage: art <0..1>"); break; }
-                document.documentElement.style.setProperty("--atmosphere-opacity", String(v));
-                print(`atmosphere opacity = ${v}`);
-                break;
-            }
             case "clear":    out.textContent = ""; break;
             case "exit":     close(); break;
             case "sudo":     print("nice try."); break;
