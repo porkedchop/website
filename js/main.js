@@ -2,10 +2,10 @@
 
 import { runBoot } from "./effects/boot.js";
 import { startFlowField } from "./effects/flow-field.js";
-import { startAsciiShader } from "./effects/ascii-shader.js";
+import { startFlowTapestry } from "./effects/flow-tapestry.js";
 import { startCursor } from "./effects/cursor.js";
 import { startTerminal } from "./effects/terminal.js";
-import { startScrollSerpent } from "./effects/scroll-serpent.js";
+import { startSnakePath } from "./effects/snake-path.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -40,18 +40,13 @@ runBoot(bootEl, {
 });
 
 function mountAll() {
-    // hero shader
+    // hero — generative flow tapestry (replaces the rotating ascii torus)
     const heroCanvas = document.getElementById("hero-shader");
-    let heroHandle = null;
     if (heroCanvas) {
-        heroHandle = startAsciiShader(heroCanvas);
-        if (!heroHandle.ok) {
-            // hide the WebGL canvas; the hero text still works
-            heroCanvas.style.display = "none";
-        }
+        startFlowTapestry(heroCanvas, { reducedMotion });
     }
 
-    // atmosphere flow-field
+    // atmosphere flow-field (background drifting glyphs)
     const atmosphereCanvas = document.getElementById("atmosphere");
     if (atmosphereCanvas) {
         startFlowField(atmosphereCanvas, { reducedMotion });
@@ -63,9 +58,10 @@ function mountAll() {
     // konami terminal
     startTerminal({ donutEl: document.getElementById("footer-donut") });
 
-    // scroll-serpent: alternates sides at section boundaries
+    // snake: ASCII chain that follows scroll, sweeping horizontally as you read
+    startSnakePath(document.getElementById("snake"), { reducedMotion });
+
     const sections = Array.from(document.querySelectorAll(".section"));
-    startScrollSerpent(document.getElementById("serpent"), sections, { reducedMotion });
 
     // section reveal via IntersectionObserver
     if ("IntersectionObserver" in window && !reducedMotion) {

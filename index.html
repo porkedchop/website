@@ -30,8 +30,8 @@
     <!-- Atmosphere layer -->
     <canvas id="atmosphere" class="atmosphere" aria-hidden="true"></canvas>
 
-    <!-- Scroll-serpent: matrix-style cascade that alternates sides at section boundaries -->
-    <pre id="serpent" class="serpent" data-side="left" aria-hidden="true"></pre>
+    <!-- Snake: ASCII chain that follows scroll with sinuous lag -->
+    <canvas id="snake" class="snake" aria-hidden="true"></canvas>
 
     <!-- Theme toggle -->
     <div class="theme-box" role="group" aria-label="Theme">
@@ -72,6 +72,10 @@
         <!-- NOW -->
         <section id="now" class="section section--now">
             <div class="section-container">
+                <pre class="accent accent--ne" aria-hidden="true">▊
+   __
+  /  \
+ /    \</pre>
                 <header class="section-header"><h2>$ cat now.txt</h2></header>
                 <div class="hover-card">
                     <ul class="now-list">
@@ -87,6 +91,11 @@
         <!-- EXPERIENCE -->
         <section id="experience" class="section section--experience">
             <div class="section-container">
+                <pre class="accent accent--sw" aria-hidden="true">┌─────┐
+│ ▓▓▓ │
+│ ░░░ │
+│ ··· │
+└─────┘</pre>
                 <header class="section-header"><h2>$ cat experience.txt</h2></header>
 
                 <article class="hover-card xp">
@@ -156,6 +165,9 @@
         <!-- PROJECTS -->
         <section id="projects" class="section section--projects">
             <div class="section-container">
+                <pre class="accent accent--ne" aria-hidden="true">{ [ ( ) ] }
+ [ { } ]
+   ( )</pre>
                 <header class="section-header"><h2>$ ls -la ~/projects</h2></header>
                 <div class="project-grid">
 
@@ -217,6 +229,12 @@
         <!-- SKILLS -->
         <section id="skills" class="section section--skills">
             <div class="section-container">
+                <pre class="accent accent--sw" aria-hidden="true">  ╱╲
+ ╱  ╲
+╱ ▓▓ ╲
+╲ ▓▓ ╱
+ ╲  ╱
+  ╲╱</pre>
                 <header class="section-header"><h2>$ cat engineering_and_research.txt</h2></header>
                 <div class="skill-grid">
                     <div class="hover-card skill-card">
@@ -277,6 +295,11 @@
         <!-- PRESS -->
         <section id="press" class="section section--press">
             <div class="section-container">
+                <pre class="accent accent--ne" aria-hidden="true">  ~~~~
+ ~    ~
+~  ··  ~
+ ~    ~
+  ~~~~</pre>
                 <header class="section-header"><h2>$ cat press.txt</h2></header>
                 <figure class="press-quote">
                     <blockquote>
