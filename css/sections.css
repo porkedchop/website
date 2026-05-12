@@ -24,17 +24,47 @@
 .xp-role { color: var(--fg-muted); font-weight: 400; }
 .xp-meta { color: var(--fg-muted); font-size: 0.85rem; margin: 2px 0 8px; }
 .xp ul { margin-top: 6px; }
-.xp-nda {
-    color: var(--fg-muted);
-    font-size: 0.88rem;
-    border-left: 2px solid var(--accent);
-    padding: 4px 0 4px 10px;
-    margin-top: 10px;
-}
 .xp-links {
     margin-top: 10px;
     font-size: 0.9rem;
     color: var(--fg-muted);
+}
+
+/* "Previously" — earlier roles, broader summary */
+.xp-prev {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--border);
+}
+.xp-prev-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    margin: 0 0 10px;
+}
+.xp-prev-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+}
+.xp-prev-list li {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--bg-card);
+    font-size: 0.92rem;
+}
+.xp-prev-meta {
+    color: var(--fg-muted);
+    font-size: 0.82rem;
+    margin-left: 6px;
+}
+.xp-prev-body {
+    color: var(--fg-muted);
+    font-size: 0.88rem;
 }
 
 /* ----- /projects ----- */
@@ -52,7 +82,7 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 16px 16px 14px;
+    padding: 18px 18px 16px;
     transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
     display: flex;
     flex-direction: column;
@@ -66,7 +96,7 @@
     inset: 0;
     background: radial-gradient(
         circle at var(--mx, 50%) var(--my, 50%),
-        color-mix(in srgb, var(--accent) 18%, transparent) 0%,
+        color-mix(in srgb, var(--accent) 14%, transparent) 0%,
         transparent 55%
     );
     opacity: 0;
@@ -84,39 +114,36 @@
     font-size: 1rem;
     color: var(--fg);
     margin: 0;
+    letter-spacing: 0.01em;
 }
-.project-tag {
-    color: var(--fg-muted);
-    font-size: 0.78rem;
+.project-tags {
+    list-style: none;
+    padding: 0;
     margin: 2px 0 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.project-tags li {
+    font-size: 0.72rem;
+    color: var(--fg-muted);
+    padding: 2px 8px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--bg) 50%, transparent);
     letter-spacing: 0.02em;
 }
-.project-demo {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 10px;
-    overflow-x: auto;
-}
-.project-ascii {
+.project-body {
+    color: var(--fg);
+    font-size: 0.92rem;
+    line-height: 1.55;
     margin: 0;
-    color: var(--fg-muted);
-    font-size: 0.74rem;
-    line-height: 1.35;
-    white-space: pre;
-    font-family: var(--font-mono);
 }
-.ds-line { display: block; }
-.ds-line--ai { color: var(--fg-muted); }
-.ds-line--da { color: var(--danger); font-weight: 600; }
-.ds-line--push { color: var(--accent); }
-
 .project-links {
     margin-top: auto;
     font-size: 0.85rem;
     color: var(--fg-muted);
 }
-
 .project-tile--private { border-style: dashed; }
 .project-tile--private .lock { font-size: 0.85em; opacity: 0.7; }
 
@@ -144,9 +171,41 @@
 .skill-card:nth-child(2) h3 { color: var(--accent-2); }
 .skill-card:nth-child(3) h3 { color: var(--accent-3); }
 .skill-card:nth-child(4) h3 { color: var(--success); }
-.skill-card:nth-child(5) h3 { color: var(--fg-muted); }
-/* span the last odd card across both columns if there's a 5th */
-.skill-card:nth-child(5):last-child { grid-column: 1 / -1; }
+.skill-card:nth-child(5) h3 { color: var(--accent); }
+.skill-card:nth-child(6) h3 { color: var(--fg-muted); }
+
+/* ----- /education ----- */
+.course-label { margin: 10px 0 4px; }
+.course-grid {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 18px;
+    font-size: 0.92rem;
+}
+@media (max-width: 640px) {
+    .course-grid { grid-template-columns: 1fr; }
+}
+.course-grid li {
+    padding: 4px 0;
+    color: var(--fg);
+    position: relative;
+    padding-left: 14px;
+}
+.course-grid li::before {
+    content: "·";
+    position: absolute;
+    left: 2px;
+    color: var(--accent);
+    font-weight: 700;
+}
+.course-tag {
+    color: var(--fg-muted);
+    font-size: 0.78rem;
+    margin-left: 4px;
+}
 
 /* ----- /press ----- */
 .press-quote {

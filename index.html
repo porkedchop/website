@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Bishop Kammeraad — Go-to-Market Engineer at Revivn, Co-Founder of Student Section. LLM engineering, MCP servers, eval harnesses." />
+    <meta name="description" content="Bishop Kammeraad — Go-to-Market Engineer at Revivn, Co-Founder of Student Section." />
     <meta name="theme-color" content="#000000" />
     <meta property="og:title" content="Bishop Kammeraad" />
-    <meta property="og:description" content="LLM engineering, MCP servers, eval harnesses. GTM engineering at Revivn. Co-founder, Student Section." />
+    <meta property="og:description" content="GTM engineering at Revivn. Co-founder, Student Section. UMich CS + Econ '25." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://porkedchop.github.io/website/" />
     <title>Bishop Kammeraad — ~/whoami</title>
@@ -21,16 +21,19 @@
 </head>
 <body>
 
-    <!-- Boot overlay (covers everything during first paint) -->
+    <!-- Boot overlay -->
     <div id="boot" class="boot">
         <pre id="boot-log" class="boot-log" aria-hidden="true"></pre>
         <button id="boot-skip" class="boot-skip" type="button">[skip ⏎]</button>
     </div>
 
-    <!-- Atmosphere layer: flow-field of drifting ASCII characters, behind everything -->
+    <!-- Atmosphere layer -->
     <canvas id="atmosphere" class="atmosphere" aria-hidden="true"></canvas>
 
-    <!-- Theme toggle (always-visible top-right) -->
+    <!-- Scroll-serpent: matrix-style cascade that alternates sides at section boundaries -->
+    <pre id="serpent" class="serpent" data-side="left" aria-hidden="true"></pre>
+
+    <!-- Theme toggle -->
     <div class="theme-box" role="group" aria-label="Theme">
         <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle theme">🌙</button>
     </div>
@@ -44,14 +47,12 @@
                 <span class="hero-typed" id="hero-typed">whoami</span><span class="hero-caret">▊</span>
             </h1>
             <p class="hero-tagline">
-                Bishop Kammeraad — LLM engineering, MCP, eval harnesses.<br />
-                Go-to-Market Engineer @ Revivn · Co-founder @ Student Section.
+                Bishop Kammeraad — go-to-market engineer · co-founder · operator.
             </p>
             <p class="hero-links">
                 <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a> ·
                 <a href="https://www.linkedin.com/in/bishop-kammeraad-80593b204/" target="_blank" rel="noopener">linkedin</a> ·
-                <a href="https://github.com/porkedchop" target="_blank" rel="noopener">github</a> ·
-                <a href="images/resume.pdf" target="_blank" rel="noopener">resume.pdf</a>
+                <a href="https://github.com/porkedchop" target="_blank" rel="noopener">github</a>
             </p>
         </div>
     </header>
@@ -74,8 +75,8 @@
                 <header class="section-header"><h2>$ cat now.txt</h2></header>
                 <div class="hover-card">
                     <ul class="now-list">
-                        <li>Building Claude-powered eval harnesses & MCP servers at Revivn (Brooklyn).</li>
-                        <li>Shipping Student Section features for the spring sports window.</li>
+                        <li>Building Claude-powered eval harnesses, ICP scoring, and prospect-pipeline automations at Revivn (Brooklyn).</li>
+                        <li>Shipping Student Section features for the fall sports window.</li>
                         <li>Side-quest: a voice-driven pocket briefer on M5 Cardputer hardware.</li>
                         <li>Always reachable — <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a>.</li>
                     </ul>
@@ -93,13 +94,12 @@
                         <h3>Revivn <span class="xp-role">— Go-to-Market Engineer</span></h3>
                         <p class="xp-meta">Brooklyn, NY · Feb 2026 – Present</p>
                     </header>
-                    <p>
-                        Building evaluation-driven systems on top of the Claude API for the company's
-                        sales-intelligence pipeline. Work spans LLM scoring and quality-audit harnesses, batch-prompt
-                        evaluation with regression gates, multi-system integration in Python and TypeScript, and
-                        internal tooling (Flask dashboards with SSO, deployment-verified alert daemons).
-                    </p>
-                    <p class="xp-nda"><em>Mostly behind an NDA — happy to walk through specifics in conversation.</em></p>
+                    <ul>
+                        <li>Build Claude-powered scoring, validation, and quality audits across the prospect pipeline — ICP scoring models, Claude Opus batch quality audits, and a Clay enrichment pipeline that verifies prospect data at scale via structured prompting, batch evaluation, and ground-truth reconciliation.</li>
+                        <li>Architect the integration stack in Python and TypeScript across Snowflake, Salesforce, Clay, Brave Search, the Anthropic API, Slack, Google News, ZoomInfo, and Okta — funneling the raw company universe into a verified ICP cohort.</li>
+                        <li>Ship the production tooling sales uses daily — a Flask dashboard with Okta SSO and role-based access for admins, leadership, and reps; a 24/7 Slack alert daemon on Railway with multi-gate deduplication and build-stamped deployment verification; an automated territory-distribution workflow with sandbox dry-run mode.</li>
+                        <li>Translate open-ended growth questions into shipped systems — vendor audits, Clay-based contact waterfalls as enrichment replacements, and a cohort-survival forecasting framework with tier-aware churn definitions for financial modeling.</li>
+                    </ul>
                 </article>
 
                 <article class="hover-card xp">
@@ -131,6 +131,25 @@
                         <li>Diagnosed system failures by tracing data inconsistencies across listing, checkout, and shipping; converted manual workarounds into repeatable scripted fixes.</li>
                     </ul>
                 </article>
+
+                <!-- Previously -->
+                <div class="xp-prev">
+                    <h3 class="xp-prev-title">$ ls ~/experience/previously</h3>
+                    <ul class="xp-prev-list">
+                        <li>
+                            <strong>Microsoft Mentorship Program</strong> <span class="xp-prev-meta">Detroit · Jun – Aug 2024</span>
+                            <br /><span class="xp-prev-body">Mentored through organizational data analysis, strategic decision-making, and data-driven reporting.</span>
+                        </li>
+                        <li>
+                            <strong>Adobe Mentorship Program</strong> <span class="xp-prev-meta">Detroit · Jun – Aug 2023</span>
+                            <br /><span class="xp-prev-body">Strategic discussions on performance metrics, exposure to workflow-optimization analysis in high-level meetings.</span>
+                        </li>
+                        <li>
+                            <strong>Prophets Group</strong> <span class="xp-prev-meta">Remote · Jan 2019 – Apr 2021</span>
+                            <br /><span class="xp-prev-body">Technical staff — operations automation, financial tracking, UX optimization, and process engineering.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -140,116 +159,55 @@
                 <header class="section-header"><h2>$ ls -la ~/projects</h2></header>
                 <div class="project-grid">
 
-                    <article class="project-tile" data-project="devils-advocate">
+                    <article class="project-tile">
                         <header class="project-head">
                             <h3>devils-advocate-mcp</h3>
-                            <p class="project-tag">MCP · TypeScript · Anthropic SDK</p>
                         </header>
-                        <p>Anti-sycophancy MCP server. Hard-codes the "no" so your AI stops being a yes-man — forces structured objections, cites hidden assumptions, refuses to capitulate to social pressure.</p>
-                        <div class="project-demo" aria-hidden="true">
-                            <pre class="project-ascii"><span class="ds-line ds-line--ai">AI: that sounds great, you should ship it.</span>
-<span class="ds-line ds-line--da">▌ devil's advocate engaged...</span>
-<span class="ds-line ds-line--push">→ flag: untested assumption on traffic shape</span>
-<span class="ds-line ds-line--push">→ flag: rollback path undefined</span>
-<span class="ds-line ds-line--push">→ recommend: stage gate before prod</span></pre>
-                        </div>
-                        <p class="project-links">
-                            <a href="https://github.com/porkedchop/devils-advocate-mcp" target="_blank" rel="noopener">repo →</a>
-                        </p>
+                        <ul class="project-tags">
+                            <li>MCP</li><li>TypeScript</li><li>Anthropic SDK</li>
+                        </ul>
+                        <p class="project-body">Anti-sycophancy MCP server. Hard-codes the "no" so the model stops being a yes-man — forces structured objections, cites hidden assumptions, refuses to capitulate to social pressure.</p>
                     </article>
 
-                    <article class="project-tile" data-project="claude-pocket-bot">
+                    <article class="project-tile">
                         <header class="project-head">
                             <h3>claude-pocket-bot</h3>
-                            <p class="project-tag">MicroPython · ESP32-S3 · Whisper</p>
                         </header>
-                        <p>Voice-driven prospect briefer on an M5 Cardputer-Adv. Hold space, ask about a company, see a brief on the 240×135 LCD. Streams I2S audio over TCP to a Whisper companion.</p>
-                        <div class="project-demo" aria-hidden="true">
-                            <pre class="project-ascii" id="cardputer-screen">┌──────────────────────────────┐
-│ ANTHROPIC                    │
-│ AI safety lab, SF            │
-│ Funded: $7.3B · 1,000+ ppl   │
-│ Models: Claude family        │
-│ ─ asks: GTM tooling, eval    │
-└──────────────────────────────┘
-[space] talk · [esc] back</pre>
-                        </div>
-                        <p class="project-links">
-                            <a href="https://github.com/porkedchop/claude-pocket-bot" target="_blank" rel="noopener">repo →</a>
-                        </p>
+                        <ul class="project-tags">
+                            <li>MicroPython</li><li>ESP32-S3</li><li>Whisper</li>
+                        </ul>
+                        <p class="project-body">Voice-driven prospect briefer on an M5 Cardputer-Adv. Hold space, ask about a company, see a brief on the 240×135 LCD. Streams I2S audio over TCP to a Whisper companion.</p>
                     </article>
 
-                    <article class="project-tile" data-project="redwood">
+                    <article class="project-tile">
+                        <header class="project-head">
+                            <h3>healthcare-ml-toolbox</h3>
+                        </header>
+                        <ul class="project-tags">
+                            <li>Python</li><li>scikit-learn</li><li>PostgreSQL</li><li>Railway</li>
+                        </ul>
+                        <p class="project-body">Production ML platform for virtual primary care. PostgreSQL-persisted models with API auth and batch processing, deployed on Railway. Featured models: appointment no-show prediction and 30-day readmission risk (Random Forest / Gradient Boosting / Logistic Regression).</p>
+                    </article>
+
+                    <article class="project-tile">
                         <header class="project-head">
                             <h3>redwood-cleaning-co</h3>
-                            <p class="project-tag">Next.js 15 · React 19 · Tailwind</p>
                         </header>
-                        <p>Modern marketing site for a local cleaning company. RSC, type-strict, deployed on Vercel.</p>
-                        <div class="project-demo" aria-hidden="true">
-                            <pre class="project-ascii">┌─ redwood-cleaning-co.vercel.app ──┐
-│  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   │
-│  ▓ book a clean    ▓               │
-│  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                │
-│  responsive · type-strict · RSC   │
-└────────────────────────────────────┘</pre>
-                        </div>
-                        <p class="project-links">
-                            <a href="https://redwood-cleaning-co.vercel.app" target="_blank" rel="noopener">live →</a> ·
-                            <a href="https://github.com/porkedchop/redwood-cleaning-co" target="_blank" rel="noopener">repo →</a>
-                        </p>
+                        <ul class="project-tags">
+                            <li>Next.js 15</li><li>React 19</li><li>Tailwind</li><li>RSC</li>
+                        </ul>
+                        <p class="project-body">Modern marketing site for a local cleaning company. React Server Components, type-strict, deployed on Vercel.</p>
+                        <p class="project-links"><a href="https://redwood-cleaning-co.vercel.app" target="_blank" rel="noopener">live →</a></p>
                     </article>
 
-                    <article class="project-tile" data-project="middesk">
-                        <header class="project-head">
-                            <h3>middesk-assessment</h3>
-                            <p class="project-tag">Python · Google Forms API · SQLite</p>
-                        </header>
-                        <p>Take-home: YAML-driven Google Form generator + auto-ingest ETL into SQLite. Zero hardcoding — fields.yaml is the single source of truth. Repeatable per state/client.</p>
-                        <div class="project-demo" aria-hidden="true">
-                            <pre class="project-ascii">fields.yaml ─▶ create_form.py ─▶ Google Form
-                                       │
-                                       ▼
-                              responses (Sheet)
-                                       │
-                                  etl.py
-                                       │
-                                       ▼
-                                 forms.sqlite</pre>
-                        </div>
-                        <p class="project-links">
-                            <a href="https://github.com/porkedchop/Middesk-assessment" target="_blank" rel="noopener">repo →</a>
-                        </p>
-                    </article>
-
-                    <article class="project-tile" data-project="ss-rpa">
-                        <header class="project-head">
-                            <h3>student-section-rpa</h3>
-                            <p class="project-tag">Python · EasyOCR · PyAutoGUI</p>
-                        </header>
-                        <p>Pre-marketplace RPA bot for batched UMich student ticket transfers. Reads the screen via OCR, drives the click-flow with PyAutoGUI. Predecessor to the Student Section app.</p>
-                        <div class="project-demo" aria-hidden="true">
-                            <pre class="project-ascii">[screencap] → [OCR] → [find seat #] → [paste] → [confirm]
-   ▓▓░░░░       ░▓▓░       ░░▓▓░        ░░░▓▓     ▓▓▓▓▓
-   capture      read       locate       fill      submit</pre>
-                        </div>
-                        <p class="project-links">
-                            <a href="https://github.com/porkedchop/StudentSectionTicketTransferAutomation" target="_blank" rel="noopener">repo →</a>
-                        </p>
-                    </article>
-
-                    <article class="project-tile project-tile--private" data-project="gtm-tooling">
+                    <article class="project-tile project-tile--private">
                         <header class="project-head">
                             <h3>gtm-tooling <span class="lock">🔒</span></h3>
-                            <p class="project-tag">Python · Anthropic SDK · Notion · multi-source enrichment</p>
                         </header>
-                        <p>Work-adjacent: a constellation of GTM intelligence tools — account briefing, contact discovery, ICP scoring. Multi-source enrichment, rate-limited LLM passes, Slack and Notion delivery. Repos private; happy to demo on a call.</p>
-                        <div class="project-demo" aria-hidden="true">
-                            <pre class="project-ascii">[ sources ] ──▶ [ enrich ] ──▶ [ score ] ──▶ [ alert ]
-   linkedin       merge keys      LLM grader    slack/notion
-   crunchbase     dedupe          regress-gate
-   built-with     resolve         confidence</pre>
-                        </div>
-                        <p class="project-links"><em>private — ask me about it.</em></p>
+                        <ul class="project-tags">
+                            <li>Python</li><li>Anthropic SDK</li><li>Notion</li><li>multi-source enrichment</li>
+                        </ul>
+                        <p class="project-body">Work-adjacent: a constellation of GTM intelligence tools — account briefing, contact discovery, ICP scoring. Multi-source enrichment, rate-limited LLM passes, Slack and Notion delivery. Private; happy to demo on a call.</p>
                     </article>
 
                 </div>
@@ -262,12 +220,16 @@
                 <header class="section-header"><h2>$ cat engineering_and_research.txt</h2></header>
                 <div class="skill-grid">
                     <div class="hover-card skill-card">
-                        <h3>Languages</h3>
-                        <p>Python · TypeScript · JavaScript · SQL</p>
+                        <h3>Languages — production</h3>
+                        <p>Python · TypeScript · JavaScript · C++ · SQL</p>
+                    </div>
+                    <div class="hover-card skill-card">
+                        <h3>Languages — academic + side</h3>
+                        <p>C · Java · Swift · Bash · x86 Assembly</p>
                     </div>
                     <div class="hover-card skill-card">
                         <h3>LLM Engineering</h3>
-                        <p>Claude API (sampling, batch, structured prompts) · MCP server design · prompt design and iteration with regression gates · eval harness construction.</p>
+                        <p>Claude API (sampling, batch, structured prompts) · MCP server design · prompt design and iteration with regression gates · eval-harness construction.</p>
                     </div>
                     <div class="hover-card skill-card">
                         <h3>Research Methodology</h3>
@@ -292,7 +254,22 @@
                 <div class="hover-card">
                     <p><strong>University of Michigan — Ann Arbor</strong></p>
                     <p>BS in Computer Science, BS in Economics — June 2025</p>
-                    <p><em>Relevant coursework:</em> Software Engineering, Databases, Systems Design, Machine Learning, Applied Econometrics.</p>
+                    <p class="course-label"><em>Relevant coursework:</em></p>
+                    <ul class="course-grid">
+                        <li>Data Structures &amp; Algorithms <span class="course-tag">EECS 281</span></li>
+                        <li>Software Engineering <span class="course-tag">EECS 481</span></li>
+                        <li>Databases <span class="course-tag">EECS 484</span></li>
+                        <li>Web Systems <span class="course-tag">EECS 493</span></li>
+                        <li>Computer Architecture <span class="course-tag">EECS 370</span></li>
+                        <li>Computer Security <span class="course-tag">EECS 388</span></li>
+                        <li>Machine Learning</li>
+                        <li>Applied Econometrics</li>
+                        <li>Microeconomic Theory</li>
+                        <li>Macroeconomic Theory</li>
+                        <li>Corporate Finance</li>
+                        <li>Money &amp; Banking</li>
+                        <li>Game Theory</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -337,7 +314,7 @@
 
     <footer class="site-footer">
         <pre class="footer-ascii" id="footer-donut" aria-hidden="true"></pre>
-        <p>built in vanilla JS with a flow field, a fragment shader, and too many semicolons.</p>
+        <p>vanilla JS · a flow field, a fragment shader, and a serpent on the side.</p>
         <p>press <kbd>↑</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>b</kbd> <kbd>a</kbd> for a shell.</p>
         <p>&copy; <span id="year"></span> Bishop Kammeraad</p>
     </footer>
@@ -362,7 +339,6 @@
         </div>
     </div>
 
-    <!-- Module entry -->
     <script type="module" src="js/main.js"></script>
 </body>
 </html>
