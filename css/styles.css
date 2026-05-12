@@ -285,14 +285,31 @@ kbd {
     line-height: 1;
     letter-spacing: 0;
     color: var(--accent);
-    /* crisp characters — no heavy glow that smudges the cell strokes */
     text-shadow: 0 0 1px var(--accent);
     white-space: pre;
     display: inline-block;
     text-align: left;
     text-rendering: geometricPrecision;
     -webkit-font-smoothing: antialiased;
-    animation: heroFadeIn 1.2s cubic-bezier(0.33, 0.66, 0.66, 1) 0.1s both;
+    animation:
+        heroFadeIn 1.2s cubic-bezier(0.33, 0.66, 0.66, 1) 0.1s both,
+        heroPulse 3.6s ease-in-out 1.5s infinite;
+}
+
+@keyframes heroPulse {
+    0%, 100% {
+        text-shadow: 0 0 1px var(--accent);
+        filter: brightness(1);
+    }
+    50% {
+        text-shadow:
+            0 0 8px color-mix(in srgb, var(--accent) 80%, transparent),
+            0 0 1px var(--accent);
+        filter: brightness(1.18);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-name { animation: heroFadeIn 1.2s cubic-bezier(0.33, 0.66, 0.66, 1) 0.1s both; }
 }
 @keyframes heroFadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -394,23 +411,32 @@ kbd {
     margin: 0;
 }
 
-/* per-section ASCII art piece — renders in via the decoder on scroll */
+/* per-section ASCII art piece — renders in via the decoder on scroll.
+   display:block + width:fit-content + margin:auto centers the entire art
+   block as a single unit, preserving internal alignment (leading spaces stay
+   meaningful). text-align:center on a multi-line <pre> would mis-center each
+   line individually based on its own width — exactly the formatting bug we
+   were seeing. */
 .section-ascii {
     font-family: var(--font-mono);
     font-size: clamp(10px, 1.05vw, 13px);
-    line-height: 1.15;
+    line-height: 1.2;
     color: var(--accent);
-    text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 45%, transparent);
+    text-shadow: 0 0 6px color-mix(in srgb, var(--accent) 40%, transparent);
     white-space: pre;
-    margin: 0 auto 22px;
-    padding: 8px 0 14px;
-    border-bottom: 1px dashed color-mix(in srgb, var(--border) 80%, transparent);
-    text-align: center;
-    overflow: hidden;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 4px auto 22px;
+    padding: 8px 14px 14px;
+    text-align: left;
+    overflow-x: auto;
+    overflow-y: hidden;
     min-height: 1em;
+    border-bottom: 1px dashed color-mix(in srgb, var(--border) 80%, transparent);
 }
 .section-ascii .ch {
-    display: inline-block;
+    display: inline;
     transition: color 0.2s;
 }
 .section-ascii .ch--scrambling { color: var(--accent-2); }
