@@ -236,6 +236,69 @@
     font-weight: 700;
 }
 
+/* ----- inline shell-access block (above /now) ----- */
+.shell-access {
+    display: block;
+    margin: 32px 0 48px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.shell-access:hover,
+.shell-access:focus-visible {
+    border-color: color-mix(in srgb, var(--accent) 65%, var(--border));
+    box-shadow: 0 14px 36px -22px color-mix(in srgb, var(--accent) 70%, transparent);
+    outline: none;
+    transform: translateY(-1px);
+}
+.shell-access-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: color-mix(in srgb, var(--bg) 60%, #000);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+}
+.shell-access-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.shell-access-dot--r { background: #ff5f56; }
+.shell-access-dot--y { background: #ffbd2e; }
+.shell-access-dot--g { background: #27c93f; }
+.shell-access-title { flex: 1; text-align: center; }
+.shell-access-line {
+    padding: 18px 18px 8px;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--fg);
+}
+.shell-access-prompt {
+    color: var(--accent);
+    font-weight: 700;
+    margin-right: 8px;
+    text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.shell-access-cmd { color: var(--fg); }
+.shell-access-caret {
+    display: inline-block;
+    width: 0.55em;
+    color: var(--accent);
+    margin-left: 2px;
+    animation: blink 1.05s steps(1) infinite;
+}
+.shell-access-hint {
+    padding: 0 18px 14px;
+    margin: 0;
+    color: var(--fg-muted);
+    font-size: 0.82rem;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
 /* ----- terminal overlay (konami) ----- */
 .terminal-overlay {
     position: fixed;
