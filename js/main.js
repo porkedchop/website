@@ -7,6 +7,17 @@ import { startAsciiDecoder } from "./effects/ascii-decoder.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+// Don't let the browser auto-restore scroll to a previous anchor on reload.
+// Without this, a stale URL hash from a prior nav-click drops the user into
+// whatever section was last visited (e.g. "#press").
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+}
+if (window.location.hash) {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+}
+window.scrollTo(0, 0);
+
 // year stamp
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -86,7 +97,9 @@ function mountAll() {
         });
     });
 
-    // smooth-scroll the nav with a View-Transition wrap when supported
+    // smooth-scroll the nav with a View-Transition wrap when supported.
+    // We deliberately do *not* update history with a hash — that's what caused
+    // reloads to drop into stale anchors like #press.
     document.querySelectorAll(".directory-nav a").forEach((a) => {
         a.addEventListener("click", (e) => {
             const id = a.getAttribute("href").slice(1);
@@ -99,7 +112,43 @@ function mountAll() {
             } else {
                 doScroll();
             }
-            history.replaceState(null, "", "#" + id);
         });
     });
+
+    // live typed prompt: cycles `whoami` → `cat about.txt` → `ls ~/projects` → `tail -f ~/now`
+    typeHero();
+}
+
+function typeHero() {
+    const target = document.getElementById("hero-typed");
+    if (!target) return;
+    const phrases = ["whoami", "cat about.txt", "ls ~/projects", "tail -f ~/now"];
+    let pi = 0;
+    let ci = phrases[pi].length;
+    let stage = "hold";
+    target.textContent = phrases[pi];
+    if (reducedMotion) return;
+
+    // initial hold before first erase
+    setTimeout(() => { stage = "erasing"; }, 2200);
+
+    setInterval(() => {
+        if (stage === "typing") {
+            if (ci < phrases[pi].length) {
+                ci++;
+                target.textContent = phrases[pi].slice(0, ci);
+            } else {
+                stage = "hold";
+                setTimeout(() => { stage = "erasing"; }, 1800);
+            }
+        } else if (stage === "erasing") {
+            if (ci > 0) {
+                ci--;
+                target.textContent = phrases[pi].slice(0, ci);
+            } else {
+                pi = (pi + 1) % phrases.length;
+                stage = "typing";
+            }
+        }
+    }, 80);
 }
