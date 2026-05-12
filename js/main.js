@@ -5,6 +5,7 @@ import { startFlowField } from "./effects/flow-field.js";
 import { startAsciiShader } from "./effects/ascii-shader.js";
 import { startCursor } from "./effects/cursor.js";
 import { startTerminal } from "./effects/terminal.js";
+import { startScrollSerpent } from "./effects/scroll-serpent.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -62,8 +63,11 @@ function mountAll() {
     // konami terminal
     startTerminal({ donutEl: document.getElementById("footer-donut") });
 
+    // scroll-serpent: alternates sides at section boundaries
+    const sections = Array.from(document.querySelectorAll(".section"));
+    startScrollSerpent(document.getElementById("serpent"), sections, { reducedMotion });
+
     // section reveal via IntersectionObserver
-    const sections = document.querySelectorAll(".section");
     if ("IntersectionObserver" in window && !reducedMotion) {
         const obs = new IntersectionObserver(
             (entries) => {
@@ -91,16 +95,6 @@ function mountAll() {
             tile.style.setProperty("--my", my + "%");
         });
     });
-
-    // glitch the devil's-advocate tile on hover
-    const daTile = document.querySelector('[data-project="devils-advocate"]');
-    if (daTile) {
-        daTile.addEventListener("mouseenter", () => {
-            daTile.classList.remove("glitching");
-            void daTile.offsetWidth; // restart animation
-            daTile.classList.add("glitching");
-        });
-    }
 
     // type the "whoami" command into the hero on first paint
     typeHero();

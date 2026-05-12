@@ -106,6 +106,53 @@ kbd {
     transition: opacity 0.6s;
 }
 
+/* ----- Scroll-serpent (side-edge matrix cascade, alternates between sections) ----- */
+.serpent {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 6ch;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.25;
+    color: var(--accent);
+    pointer-events: none;
+    white-space: pre;
+    overflow: hidden;
+    text-align: center;
+    will-change: transform, left, right;
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+    );
+    opacity: 0.55;
+    text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.serpent[data-side="left"]  { left: 8px;  right: auto; transform: translateX(0); }
+.serpent[data-side="right"] { left: auto; right: 8px;  transform: translateX(0); }
+
+/* hide below tablet width so content has room */
+@media (max-width: 900px) {
+    .serpent { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .serpent { transition: none; }
+}
+
 /* ----- Theme box ----- */
 .theme-box {
     position: fixed;
@@ -190,7 +237,7 @@ kbd {
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.85;
+    opacity: 0.5;
 }
 .hero-content {
     position: relative;
