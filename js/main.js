@@ -3,7 +3,6 @@
 import { runBoot } from "./effects/boot.js";
 import { startReactionDiffusion } from "./effects/reaction-diffusion.js";
 import { startTerminal } from "./effects/terminal.js";
-import { initSplitText } from "./effects/split-text.js";
 import { startAsciiDecoder } from "./effects/ascii-decoder.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -41,9 +40,6 @@ function mountAll() {
 
     // konami terminal (donut command no longer renders a default; opt-in only)
     startTerminal({ donutEl: null });
-
-    // split + reveal display headings
-    initSplitText(".display", { reducedMotion });
 
     // per-section ASCII art pieces — decode in when each section enters viewport
     startAsciiDecoder({ reducedMotion });
