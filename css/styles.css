@@ -62,15 +62,20 @@ body {
 
 a {
     color: var(--accent);
-    text-decoration: none;
-    transition: color 0.2s, text-shadow 0.2s;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent);
+    transition: color 0.2s, text-shadow 0.2s, text-decoration-color 0.2s;
 }
 a:hover {
     color: var(--accent-2);
     text-shadow: 0 0 10px color-mix(in srgb, var(--accent-2) 45%, transparent);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    text-decoration-color: var(--accent-2);
 }
+/* nav links don't need underlines — they're clearly nav. */
+.directory-nav a { text-decoration: none; }
+.directory-nav a:hover { color: var(--accent); text-decoration: none; }
 
 h1, h2, h3 { margin: 0; font-weight: 500; }
 h3 { font-size: 1rem; font-weight: 700; color: var(--fg); }
@@ -233,6 +238,7 @@ kbd {
     height: 100%;
     z-index: 0;
     opacity: 0.95;
+    pointer-events: none;
 }
 .hero-content {
     position: relative;
@@ -323,13 +329,59 @@ kbd {
     margin: 70px 0 64px;
 }
 .section-head {
-    margin: 0 0 12px;
+    margin: 0 0 22px;
 }
+
+/* Bordered terminal-styled container — restored for readability + signal. */
+.section-container {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 36px 26px 26px;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+.section-chip {
+    position: absolute;
+    top: -13px;
+    left: 22px;
+    margin: 0;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px 6px 4px 4px;
+    padding: 3px 12px;
+    font-size: 0.82rem;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
 .section-body {
-    /* content density rather than a heavy bordered card */
     padding: 0;
     margin: 0;
 }
+
+/* per-section ASCII art piece — renders in via the decoder on scroll */
+.section-ascii {
+    font-family: var(--font-mono);
+    font-size: clamp(10px, 1.05vw, 13px);
+    line-height: 1.15;
+    color: var(--accent);
+    text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 45%, transparent);
+    white-space: pre;
+    margin: 0 auto 22px;
+    padding: 8px 0 14px;
+    border-bottom: 1px dashed color-mix(in srgb, var(--border) 80%, transparent);
+    text-align: center;
+    overflow: hidden;
+    min-height: 1em;
+}
+.section-ascii .ch {
+    display: inline-block;
+    transition: color 0.2s;
+}
+.section-ascii .ch--scrambling { color: var(--accent-2); }
 
 /* ====================================================================
    footer

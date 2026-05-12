@@ -21,18 +21,15 @@
 </head>
 <body>
 
-    <!-- Boot overlay -->
     <div id="boot" class="boot">
         <pre id="boot-log" class="boot-log" aria-hidden="true"></pre>
         <button id="boot-skip" class="boot-skip" type="button">[skip ⏎]</button>
     </div>
 
-    <!-- Theme toggle -->
     <div class="theme-box" role="group" aria-label="Theme">
         <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle theme">🌙</button>
     </div>
 
-    <!-- HERO: reaction-diffusion ASCII canvas behind, BISHOP block letters on top -->
     <header class="hero">
         <canvas id="rd-canvas" class="rd-canvas" aria-hidden="true"></canvas>
         <div class="hero-content">
@@ -70,88 +67,94 @@
         <!-- NOW -->
         <section id="now" class="section">
             <header class="section-head">
-                <p class="kicker">$ cat now.txt</p>
                 <h2 class="display">N O W</h2>
                 <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
             </header>
-            <div class="section-body">
-                <ul class="now-list">
-                    <li>Building Claude-powered eval harnesses, ICP scoring, and prospect-pipeline automations at Revivn (Brooklyn).</li>
-                    <li>Shipping Student Section features for the fall sports window.</li>
-                    <li>Side-quest: a voice-driven pocket briefer on M5 Cardputer hardware.</li>
-                    <li>Always reachable — <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a>.</li>
-                </ul>
+            <div class="section-container">
+                <p class="section-chip">$ cat now.txt</p>
+                <pre class="section-ascii" data-art-id="now" aria-hidden="true"></pre>
+                <div class="section-body">
+                    <ul class="now-list">
+                        <li>Building Claude-powered eval harnesses, ICP scoring, and prospect-pipeline automations at Revivn (Brooklyn).</li>
+                        <li>Shipping Student Section features for the fall sports window.</li>
+                        <li>Side-quest: a voice-driven pocket briefer on M5 Cardputer hardware.</li>
+                        <li>Always reachable — <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a>.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <!-- EXPERIENCE -->
         <section id="experience" class="section">
             <header class="section-head">
-                <p class="kicker">$ cat experience.txt</p>
                 <h2 class="display">E X P E R I E N C E</h2>
                 <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
             </header>
-            <div class="section-body">
+            <div class="section-container">
+                <p class="section-chip">$ cat experience.txt</p>
+                <pre class="section-ascii" data-art-id="experience" aria-hidden="true"></pre>
+                <div class="section-body">
 
-                <article class="xp">
-                    <header class="xp-head">
-                        <h3>Revivn <span class="xp-role">— Go-to-Market Engineer</span></h3>
-                        <p class="xp-meta">Brooklyn, NY · Feb 2026 – Present</p>
-                    </header>
-                    <ul>
-                        <li>Build Claude-powered scoring, validation, and quality audits across the prospect pipeline — ICP scoring models, Claude Opus batch quality audits, and a Clay enrichment pipeline that verifies prospect data at scale via structured prompting, batch evaluation, and ground-truth reconciliation.</li>
-                        <li>Architect the integration stack in Python and TypeScript across Snowflake, Salesforce, Clay, Brave Search, the Anthropic API, Slack, Google News, ZoomInfo, and Okta — funneling the raw company universe into a verified ICP cohort.</li>
-                        <li>Ship the production tooling sales uses daily — a Flask dashboard with Okta SSO and role-based access for admins, leadership, and reps; a 24/7 Slack alert daemon on Railway with multi-gate deduplication and build-stamped deployment verification; an automated territory-distribution workflow with sandbox dry-run mode.</li>
-                        <li>Translate open-ended growth questions into shipped systems — vendor audits, Clay-based contact waterfalls as enrichment replacements, and a cohort-survival forecasting framework with tier-aware churn definitions for financial modeling.</li>
-                    </ul>
-                </article>
+                    <article class="xp">
+                        <header class="xp-head">
+                            <h3>Revivn <span class="xp-role">— Go-to-Market Engineer</span></h3>
+                            <p class="xp-meta">Brooklyn, NY · Feb 2026 – Present</p>
+                        </header>
+                        <ul>
+                            <li>Build Claude-powered scoring, validation, and quality audits across the prospect pipeline — ICP scoring models, Claude Opus batch quality audits, and a Clay enrichment pipeline that verifies prospect data at scale via structured prompting, batch evaluation, and ground-truth reconciliation.</li>
+                            <li>Architect the integration stack in Python and TypeScript across Snowflake, Salesforce, Clay, Brave Search, the Anthropic API, Slack, Google News, ZoomInfo, and Okta — funneling the raw company universe into a verified ICP cohort.</li>
+                            <li>Ship the production tooling sales uses daily — a Flask dashboard with Okta SSO and role-based access for admins, leadership, and reps; a 24/7 Slack alert daemon on Railway with multi-gate deduplication and build-stamped deployment verification; an automated territory-distribution workflow with sandbox dry-run mode.</li>
+                            <li>Translate open-ended growth questions into shipped systems — vendor audits, Clay-based contact waterfalls as enrichment replacements, and a cohort-survival forecasting framework with tier-aware churn definitions for financial modeling.</li>
+                        </ul>
+                    </article>
 
-                <article class="xp">
-                    <header class="xp-head">
-                        <h3>Student Section <span class="xp-role">— Co-Founder &amp; Product Engineer</span></h3>
-                        <p class="xp-meta">Ann Arbor, MI · Oct 2024 – Present</p>
-                    </header>
-                    <ul>
-                        <li>Co-founded a peer-to-peer student-only ticket marketplace for the University of Michigan; scaled to <strong>3,000+ active users</strong>, <strong>300–400 tickets per home game</strong>, and <strong>$76,000+ in transactions safeguarded</strong> against scams.</li>
-                        <li>Designed and shipped the listing and checkout flows on Stripe Connect, owning client-side state transitions, backend validations, and seller payout records.</li>
-                        <li>Wrote reconciliation logic that audits marketplace invariants continuously, holding operational load flat as volume grew.</li>
-                        <li>Instrumented funnel events to find drop-off, then iterated on UI copy and flow alongside the founding team.</li>
-                    </ul>
-                    <p class="xp-links">
-                        <a href="https://studentsection.app/" target="_blank" rel="noopener">studentsection.app</a> ·
-                        <a href="https://apps.apple.com/us/app/student-section-llc/id6751310729" target="_blank" rel="noopener">App Store</a> ·
-                        <a href="https://cse.engin.umich.edu/stories/game-day-made-easy-with-student-built-ticketing-app" target="_blank" rel="noopener">UMich CSE feature</a>
-                    </p>
-                </article>
+                    <article class="xp">
+                        <header class="xp-head">
+                            <h3>Student Section <span class="xp-role">— Co-Founder &amp; Product Engineer</span></h3>
+                            <p class="xp-meta">Ann Arbor, MI · Oct 2024 – Present</p>
+                        </header>
+                        <ul>
+                            <li>Co-founded a peer-to-peer student-only ticket marketplace for the University of Michigan; scaled to <strong>3,000+ active users</strong>, <strong>300–400 tickets per home game</strong>, and <strong>$76,000+ in transactions safeguarded</strong> against scams.</li>
+                            <li>Designed and shipped the listing and checkout flows on Stripe Connect, owning client-side state transitions, backend validations, and seller payout records.</li>
+                            <li>Wrote reconciliation logic that audits marketplace invariants continuously, holding operational load flat as volume grew.</li>
+                            <li>Instrumented funnel events to find drop-off, then iterated on UI copy and flow alongside the founding team.</li>
+                        </ul>
+                        <p class="xp-links">
+                            <a href="https://studentsection.app/" target="_blank" rel="noopener">studentsection.app</a> ·
+                            <a href="https://apps.apple.com/us/app/student-section-llc/id6751310729" target="_blank" rel="noopener">App Store</a> ·
+                            <a href="https://cse.engin.umich.edu/stories/game-day-made-easy-with-student-built-ticketing-app" target="_blank" rel="noopener">UMich CSE feature</a>
+                        </p>
+                    </article>
 
-                <article class="xp">
-                    <header class="xp-head">
-                        <h3>Bishop's Bricks <span class="xp-role">— Founder &amp; Operator</span></h3>
-                        <p class="xp-meta">Remote · Jan 2014 – Present</p>
-                    </header>
-                    <ul>
-                        <li>Built automation that synchronizes inventory and pricing across marketplaces, handling edge cases where platform rules conflict with internal stock logic.</li>
-                        <li>Wrote data utilities tracking order states, disputes, and fulfillment timing — operational visibility under high transaction volume.</li>
-                        <li>Diagnosed system failures by tracing data inconsistencies across listing, checkout, and shipping; converted manual workarounds into repeatable scripted fixes.</li>
-                    </ul>
-                </article>
+                    <article class="xp">
+                        <header class="xp-head">
+                            <h3>Bishop's Bricks <span class="xp-role">— Founder &amp; Operator</span></h3>
+                            <p class="xp-meta">Remote · Jan 2014 – Present</p>
+                        </header>
+                        <ul>
+                            <li>Built automation that synchronizes inventory and pricing across marketplaces, handling edge cases where platform rules conflict with internal stock logic.</li>
+                            <li>Wrote data utilities tracking order states, disputes, and fulfillment timing — operational visibility under high transaction volume.</li>
+                            <li>Diagnosed system failures by tracing data inconsistencies across listing, checkout, and shipping; converted manual workarounds into repeatable scripted fixes.</li>
+                        </ul>
+                    </article>
 
-                <div class="xp-prev">
-                    <h3 class="xp-prev-title">$ ls ~/experience/previously</h3>
-                    <ul class="xp-prev-list">
-                        <li>
-                            <strong>Microsoft Mentorship Program</strong> <span class="xp-prev-meta">Detroit · Jun – Aug 2024</span>
-                            <br /><span class="xp-prev-body">Mentored through organizational data analysis, strategic decision-making, and data-driven reporting.</span>
-                        </li>
-                        <li>
-                            <strong>Adobe Mentorship Program</strong> <span class="xp-prev-meta">Detroit · Jun – Aug 2023</span>
-                            <br /><span class="xp-prev-body">Strategic discussions on performance metrics, exposure to workflow-optimization analysis in high-level meetings.</span>
-                        </li>
-                        <li>
-                            <strong>Prophets Group</strong> <span class="xp-prev-meta">Remote · Jan 2019 – Apr 2021</span>
-                            <br /><span class="xp-prev-body">Technical staff — operations automation, financial tracking, UX optimization, and process engineering.</span>
-                        </li>
-                    </ul>
+                    <div class="xp-prev">
+                        <h3 class="xp-prev-title">$ ls ~/experience/previously</h3>
+                        <ul class="xp-prev-list">
+                            <li>
+                                <strong>Microsoft Mentorship Program</strong> <span class="xp-prev-meta">Detroit · Jun – Aug 2024</span>
+                                <br /><span class="xp-prev-body">Mentored through organizational data analysis, strategic decision-making, and data-driven reporting.</span>
+                            </li>
+                            <li>
+                                <strong>Adobe Mentorship Program</strong> <span class="xp-prev-meta">Detroit · Jun – Aug 2023</span>
+                                <br /><span class="xp-prev-body">Strategic discussions on performance metrics, exposure to workflow-optimization analysis in high-level meetings.</span>
+                            </li>
+                            <li>
+                                <strong>Prophets Group</strong> <span class="xp-prev-meta">Remote · Jan 2019 – Apr 2021</span>
+                                <br /><span class="xp-prev-body">Technical staff — operations automation, financial tracking, UX optimization, and process engineering.</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -159,54 +162,57 @@
         <!-- PROJECTS -->
         <section id="projects" class="section">
             <header class="section-head">
-                <p class="kicker">$ ls -la ~/projects</p>
                 <h2 class="display">P R O J E C T S</h2>
                 <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
             </header>
-            <div class="section-body">
-                <div class="project-grid">
+            <div class="section-container">
+                <p class="section-chip">$ ls -la ~/projects</p>
+                <pre class="section-ascii" data-art-id="projects" aria-hidden="true"></pre>
+                <div class="section-body">
+                    <div class="project-grid">
 
-                    <article class="project-tile">
-                        <header class="project-head"><h3>devils-advocate-mcp</h3></header>
-                        <ul class="project-tags">
-                            <li>MCP</li><li>TypeScript</li><li>Anthropic SDK</li>
-                        </ul>
-                        <p class="project-body">Anti-sycophancy MCP server. Hard-codes the "no" so the model stops being a yes-man — forces structured objections, cites hidden assumptions, refuses to capitulate to social pressure.</p>
-                    </article>
+                        <article class="project-tile">
+                            <header class="project-head"><h3>devils-advocate-mcp</h3></header>
+                            <ul class="project-tags">
+                                <li>MCP</li><li>TypeScript</li><li>Anthropic SDK</li>
+                            </ul>
+                            <p class="project-body">Anti-sycophancy MCP server. Hard-codes the "no" so the model stops being a yes-man — forces structured objections, cites hidden assumptions, refuses to capitulate to social pressure.</p>
+                        </article>
 
-                    <article class="project-tile">
-                        <header class="project-head"><h3>claude-pocket-bot</h3></header>
-                        <ul class="project-tags">
-                            <li>MicroPython</li><li>ESP32-S3</li><li>Whisper</li>
-                        </ul>
-                        <p class="project-body">Voice-driven prospect briefer on an M5 Cardputer-Adv. Hold space, ask about a company, see a brief on the 240×135 LCD. Streams I2S audio over TCP to a Whisper companion.</p>
-                    </article>
+                        <article class="project-tile">
+                            <header class="project-head"><h3>claude-pocket-bot</h3></header>
+                            <ul class="project-tags">
+                                <li>MicroPython</li><li>ESP32-S3</li><li>Whisper</li>
+                            </ul>
+                            <p class="project-body">Voice-driven prospect briefer on an M5 Cardputer-Adv. Hold space, ask about a company, see a brief on the 240×135 LCD. Streams I2S audio over TCP to a Whisper companion.</p>
+                        </article>
 
-                    <article class="project-tile">
-                        <header class="project-head"><h3>healthcare-ml-toolbox</h3></header>
-                        <ul class="project-tags">
-                            <li>Python</li><li>scikit-learn</li><li>PostgreSQL</li><li>Railway</li>
-                        </ul>
-                        <p class="project-body">Production ML platform for virtual primary care. PostgreSQL-persisted models with API auth and batch processing, deployed on Railway. Featured models: appointment no-show prediction and 30-day readmission risk (Random Forest / Gradient Boosting / Logistic Regression).</p>
-                    </article>
+                        <article class="project-tile">
+                            <header class="project-head"><h3>healthcare-ml-toolbox</h3></header>
+                            <ul class="project-tags">
+                                <li>Python</li><li>scikit-learn</li><li>PostgreSQL</li><li>Railway</li>
+                            </ul>
+                            <p class="project-body">Production ML platform for virtual primary care. PostgreSQL-persisted models with API auth and batch processing, deployed on Railway. Featured models: appointment no-show prediction and 30-day readmission risk (Random Forest / Gradient Boosting / Logistic Regression).</p>
+                        </article>
 
-                    <article class="project-tile">
-                        <header class="project-head"><h3>redwood-cleaning-co</h3></header>
-                        <ul class="project-tags">
-                            <li>Next.js 15</li><li>React 19</li><li>Tailwind</li><li>RSC</li>
-                        </ul>
-                        <p class="project-body">Modern marketing site for a local cleaning company. React Server Components, type-strict, deployed on Vercel.</p>
-                        <p class="project-links"><a href="https://redwood-cleaning-co.vercel.app" target="_blank" rel="noopener">live →</a></p>
-                    </article>
+                        <article class="project-tile">
+                            <header class="project-head"><h3>redwood-cleaning-co</h3></header>
+                            <ul class="project-tags">
+                                <li>Next.js 15</li><li>React 19</li><li>Tailwind</li><li>RSC</li>
+                            </ul>
+                            <p class="project-body">Modern marketing site for a local cleaning company. React Server Components, type-strict, deployed on Vercel.</p>
+                            <p class="project-links"><a href="https://redwood-cleaning-co.vercel.app" target="_blank" rel="noopener">live →</a></p>
+                        </article>
 
-                    <article class="project-tile project-tile--private">
-                        <header class="project-head"><h3>gtm-tooling <span class="lock">🔒</span></h3></header>
-                        <ul class="project-tags">
-                            <li>Python</li><li>Anthropic SDK</li><li>Notion</li><li>multi-source enrichment</li>
-                        </ul>
-                        <p class="project-body">Work-adjacent: a constellation of GTM intelligence tools — account briefing, contact discovery, ICP scoring. Multi-source enrichment, rate-limited LLM passes, Slack and Notion delivery. Private; happy to demo on a call.</p>
-                    </article>
+                        <article class="project-tile project-tile--private">
+                            <header class="project-head"><h3>gtm-tooling <span class="lock">🔒</span></h3></header>
+                            <ul class="project-tags">
+                                <li>Python</li><li>Anthropic SDK</li><li>Notion</li><li>multi-source enrichment</li>
+                            </ul>
+                            <p class="project-body">Work-adjacent: a constellation of GTM intelligence tools — account briefing, contact discovery, ICP scoring. Multi-source enrichment, rate-limited LLM passes, Slack and Notion delivery. Private; happy to demo on a call.</p>
+                        </article>
 
+                    </div>
                 </div>
             </div>
         </section>
@@ -214,35 +220,38 @@
         <!-- SKILLS -->
         <section id="skills" class="section">
             <header class="section-head">
-                <p class="kicker">$ cat engineering_and_research.txt</p>
                 <h2 class="display">S K I L L S</h2>
                 <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
             </header>
-            <div class="section-body">
-                <div class="skill-grid">
-                    <div class="skill-card">
-                        <h3>Languages — production</h3>
-                        <p>Python · TypeScript · JavaScript · C++ · SQL</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Languages — academic + side</h3>
-                        <p>C · Java · Swift · Bash · x86 Assembly</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>LLM Engineering</h3>
-                        <p>Claude API (sampling, batch, structured prompts) · MCP server design · prompt design and iteration with regression gates · eval-harness construction.</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Research Methodology</h3>
-                        <p>Adversarial test-case design · multi-stage grader systems · regression-detection across prompt versions · Wilson confidence intervals on small-N empirical claims · multi-agent governance with self-critique loops.</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Production Engineering</h3>
-                        <p>APIs · web scraping · workflow orchestration · data-enrichment pipelines · Flask + Okta SSO + role-based access · Railway deployment with build-stamped verification.</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Spoken</h3>
-                        <p>English (native) · German (B2) · Spanish (A2)</p>
+            <div class="section-container">
+                <p class="section-chip">$ cat engineering_and_research.txt</p>
+                <pre class="section-ascii" data-art-id="skills" aria-hidden="true"></pre>
+                <div class="section-body">
+                    <div class="skill-grid">
+                        <div class="skill-card">
+                            <h3>Languages — production</h3>
+                            <p>Python · TypeScript · JavaScript · C++ · SQL</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Languages — academic + side</h3>
+                            <p>C · Java · Swift · Bash · x86 Assembly</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>LLM Engineering</h3>
+                            <p>Claude API (sampling, batch, structured prompts) · MCP server design · prompt design and iteration with regression gates · eval-harness construction.</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Research Methodology</h3>
+                            <p>Adversarial test-case design · multi-stage grader systems · regression-detection across prompt versions · Wilson confidence intervals on small-N empirical claims · multi-agent governance with self-critique loops.</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Production Engineering</h3>
+                            <p>APIs · web scraping · workflow orchestration · data-enrichment pipelines · Flask + Okta SSO + role-based access · Railway deployment with build-stamped verification.</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Spoken</h3>
+                            <p>English (native) · German (B2) · Spanish (A2)</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -251,30 +260,33 @@
         <!-- EDUCATION -->
         <section id="education" class="section">
             <header class="section-head">
-                <p class="kicker">$ cat education.txt</p>
                 <h2 class="display">E D U C A T I O N</h2>
                 <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
             </header>
-            <div class="section-body">
-                <div class="edu-card">
-                    <p><strong>University of Michigan — Ann Arbor</strong></p>
-                    <p>BS in Computer Science, BS in Economics — June 2025</p>
-                    <p class="course-label"><em>Relevant coursework:</em></p>
-                    <ul class="course-grid">
-                        <li>Data Structures &amp; Algorithms <span class="course-tag">EECS 281</span></li>
-                        <li>Software Engineering <span class="course-tag">EECS 481</span></li>
-                        <li>Databases <span class="course-tag">EECS 484</span></li>
-                        <li>Web Systems <span class="course-tag">EECS 493</span></li>
-                        <li>Computer Architecture <span class="course-tag">EECS 370</span></li>
-                        <li>Computer Security <span class="course-tag">EECS 388</span></li>
-                        <li>Machine Learning</li>
-                        <li>Applied Econometrics</li>
-                        <li>Microeconomic Theory</li>
-                        <li>Macroeconomic Theory</li>
-                        <li>Corporate Finance</li>
-                        <li>Money &amp; Banking</li>
-                        <li>Game Theory</li>
-                    </ul>
+            <div class="section-container">
+                <p class="section-chip">$ cat education.txt</p>
+                <pre class="section-ascii" data-art-id="education" aria-hidden="true"></pre>
+                <div class="section-body">
+                    <div class="edu-card">
+                        <p><strong>University of Michigan — Ann Arbor</strong></p>
+                        <p>BS in Computer Science, BS in Economics — June 2025</p>
+                        <p class="course-label"><em>Relevant coursework:</em></p>
+                        <ul class="course-grid">
+                            <li>Data Structures &amp; Algorithms <span class="course-tag">EECS 281</span></li>
+                            <li>Software Engineering <span class="course-tag">EECS 481</span></li>
+                            <li>Databases <span class="course-tag">EECS 484</span></li>
+                            <li>Web Systems <span class="course-tag">EECS 493</span></li>
+                            <li>Computer Architecture <span class="course-tag">EECS 370</span></li>
+                            <li>Computer Security <span class="course-tag">EECS 388</span></li>
+                            <li>Machine Learning</li>
+                            <li>Applied Econometrics</li>
+                            <li>Microeconomic Theory</li>
+                            <li>Macroeconomic Theory</li>
+                            <li>Corporate Finance</li>
+                            <li>Money &amp; Banking</li>
+                            <li>Game Theory</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -282,54 +294,59 @@
         <!-- PRESS -->
         <section id="press" class="section">
             <header class="section-head">
-                <p class="kicker">$ cat press.txt</p>
                 <h2 class="display">P R E S S</h2>
                 <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
             </header>
-            <div class="section-body">
-                <figure class="press-quote">
-                    <blockquote>
-                        "A model for student-built innovation on campus."
-                    </blockquote>
-                    <figcaption>
-                        — <cite>University of Michigan College of Engineering</cite> ·
-                        <a href="https://cse.engin.umich.edu/stories/game-day-made-easy-with-student-built-ticketing-app" target="_blank" rel="noopener">read the feature →</a>
-                    </figcaption>
-                </figure>
-                <p class="press-extra">
-                    See also: <a href="https://studentsection.app/" target="_blank" rel="noopener">studentsection.app</a> ·
-                    <a href="https://apps.apple.com/us/app/student-section-llc/id6751310729" target="_blank" rel="noopener">Student Section on the App Store</a>.
-                </p>
+            <div class="section-container">
+                <p class="section-chip">$ cat press.txt</p>
+                <pre class="section-ascii" data-art-id="press" aria-hidden="true"></pre>
+                <div class="section-body">
+                    <figure class="press-quote">
+                        <blockquote>
+                            "A model for student-built innovation on campus."
+                        </blockquote>
+                        <figcaption>
+                            — <cite>University of Michigan College of Engineering</cite> ·
+                            <a href="https://cse.engin.umich.edu/stories/game-day-made-easy-with-student-built-ticketing-app" target="_blank" rel="noopener">read the feature →</a>
+                        </figcaption>
+                    </figure>
+                    <p class="press-extra">
+                        See also: <a href="https://studentsection.app/" target="_blank" rel="noopener">studentsection.app</a> ·
+                        <a href="https://apps.apple.com/us/app/student-section-llc/id6751310729" target="_blank" rel="noopener">Student Section on the App Store</a>.
+                    </p>
+                </div>
             </div>
         </section>
 
         <!-- ACTIVITIES -->
         <section id="activities" class="section">
             <header class="section-head">
-                <p class="kicker">$ cat activities.txt</p>
                 <h2 class="display">A C T I V I T I E S</h2>
                 <p class="section-rule" aria-hidden="true">─── × ─── × ───</p>
             </header>
-            <div class="section-body">
-                <ul class="activities-list">
-                    <li><strong>Mensa</strong> — inducted 2022.</li>
-                    <li><strong>Association for Computing Machinery</strong> — inducted 2021.</li>
-                    <li><strong>Neuroscience Club</strong> — 2021–2023.</li>
-                    <li><strong>Finance Association</strong> — 2021–2023.</li>
-                    <li><strong>EMT</strong> (Universal EMS, Detroit) — Jun 2021–Aug 2021.</li>
-                </ul>
+            <div class="section-container">
+                <p class="section-chip">$ cat activities.txt</p>
+                <pre class="section-ascii" data-art-id="activities" aria-hidden="true"></pre>
+                <div class="section-body">
+                    <ul class="activities-list">
+                        <li><strong>Mensa</strong> — inducted 2022.</li>
+                        <li><strong>Association for Computing Machinery</strong> — inducted 2021.</li>
+                        <li><strong>Neuroscience Club</strong> — 2021–2023.</li>
+                        <li><strong>Finance Association</strong> — 2021–2023.</li>
+                        <li><strong>EMT</strong> (Universal EMS, Detroit) — Jun 2021–Aug 2021.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
     </main>
 
     <footer class="site-footer">
-        <p>typography · reaction-diffusion · vanilla js.</p>
+        <p>typography · reaction-diffusion · ascii decoder · vanilla js.</p>
         <p>press <kbd>↑</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>b</kbd> <kbd>a</kbd> for a shell.</p>
         <p>&copy; <span id="year"></span> Bishop Kammeraad</p>
     </footer>
 
-    <!-- Konami terminal overlay -->
     <div id="terminal-overlay" class="terminal-overlay" hidden>
         <div class="terminal-window" role="dialog" aria-modal="true" aria-label="Interactive shell">
             <div class="terminal-bar">
