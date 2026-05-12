@@ -7,15 +7,9 @@ import { startAsciiDecoder } from "./effects/ascii-decoder.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Don't let the browser auto-restore scroll to a previous anchor on reload.
-// Without this, a stale URL hash from a prior nav-click drops the user into
-// whatever section was last visited (e.g. "#press").
-if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
-}
-if (window.location.hash) {
-    history.replaceState(null, "", window.location.pathname + window.location.search);
-}
+// belt-and-suspenders for the scroll fix — the inline <head> script already
+// flipped scrollRestoration and cleared the hash before the browser scrolled,
+// this catches the edge case of a browser that decided to scroll anyway.
 window.scrollTo(0, 0);
 
 // year stamp
@@ -117,6 +111,43 @@ function mountAll() {
 
     // live typed prompt: cycles `whoami` → `cat about.txt` → `ls ~/projects` → `tail -f ~/now`
     typeHero();
+
+    // make the BISHOP block letters feel alive — periodic character flicker
+    activateBishop();
+}
+
+function activateBishop() {
+    const pre = document.querySelector(".hero-name");
+    if (!pre || reducedMotion) return;
+    const original = pre.textContent;
+    const chars = original.split("");
+    const nonSpaceIndices = chars
+        .map((c, i) => (c !== " " && c !== "\n") ? i : -1)
+        .filter((i) => i >= 0);
+    if (nonSpaceIndices.length === 0) return;
+
+    const SCRAMBLE = "█▓▒░╗╔╚╝║═╠╣╦╩╬01●◆◇◊*+#@".split("");
+
+    function flicker() {
+        const burst = 1 + Math.floor(Math.random() * 3);
+        const swapped = [];
+        for (let i = 0; i < burst; i++) {
+            const idx = nonSpaceIndices[(Math.random() * nonSpaceIndices.length) | 0];
+            const newChar = SCRAMBLE[(Math.random() * SCRAMBLE.length) | 0];
+            swapped.push({ idx, orig: chars[idx] });
+            chars[idx] = newChar;
+        }
+        pre.textContent = chars.join("");
+
+        setTimeout(() => {
+            for (const s of swapped) chars[s.idx] = s.orig;
+            pre.textContent = chars.join("");
+            const next = 700 + Math.random() * 1800;
+            setTimeout(flicker, next);
+        }, 70 + Math.random() * 120);
+    }
+
+    setTimeout(flicker, 1400);
 }
 
 function typeHero() {

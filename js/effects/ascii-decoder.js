@@ -67,17 +67,6 @@ export const ART = {
          │  "a model for student-  │
          │   built innovation."    │
          └─────────────────────────┘`,
-
-    activities: `                  ✦
-                ╲ │ ╱
-              ★ ──●── ★
-                ╱ │ ╲
-                  ✦
-              ╱   │   ╲
-             ★    │    ★
-              ╲   │   ╱
-                  ✦
-                  ★`,
 };
 
 export function startAsciiDecoder({ reducedMotion = false } = {}) {

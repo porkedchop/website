@@ -11,13 +11,21 @@
     <meta property="og:url" content="https://porkedchop.github.io/website/" />
     <title>Bishop Kammeraad — ~/whoami</title>
 
+    <!-- inline & synchronous: must run before browser auto-scrolls to a stale hash -->
+    <script>
+        if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+        if (window.location.hash) {
+            history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" />
 
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/sections.css" />
-    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/styles.css?v=9" />
+    <link rel="stylesheet" href="css/sections.css?v=9" />
+    <link rel="stylesheet" href="css/animations.css?v=9" />
 </head>
 <body>
 
@@ -375,7 +383,6 @@
             </header>
             <div class="section-container">
                 <p class="section-chip">$ cat activities.txt</p>
-                <pre class="section-ascii" data-art-id="activities" aria-hidden="true"></pre>
                 <div class="section-body">
                     <ul class="activities-list">
                         <li><strong>Mensa</strong> — inducted 2022.</li>
@@ -414,6 +421,6 @@
         </div>
     </div>
 
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/main.js?v=9"></script>
 </body>
 </html>
