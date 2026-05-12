@@ -39,7 +39,19 @@ function mountAll() {
     if (rdCanvas) startReactionDiffusion(rdCanvas, { reducedMotion });
 
     // konami terminal (donut command no longer renders a default; opt-in only)
-    startTerminal({ donutEl: null });
+    const term = startTerminal({ donutEl: null });
+
+    // make the inline shell-access block above /now clickable
+    const shellAccess = document.getElementById("shell-access");
+    if (shellAccess && term && term.open) {
+        shellAccess.addEventListener("click", () => term.open());
+        shellAccess.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                term.open();
+            }
+        });
+    }
 
     // per-section ASCII art pieces — decode in when each section enters viewport
     startAsciiDecoder({ reducedMotion });

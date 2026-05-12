@@ -64,6 +64,21 @@
 
     <main class="container">
 
+        <!-- Inline shell access — click anywhere or press backtick -->
+        <aside class="shell-access" id="shell-access" role="button" tabindex="0" aria-label="Open interactive shell">
+            <div class="shell-access-bar">
+                <span class="shell-access-dot shell-access-dot--r"></span>
+                <span class="shell-access-dot shell-access-dot--y"></span>
+                <span class="shell-access-dot shell-access-dot--g"></span>
+                <span class="shell-access-title">bishop@porkedchop — zsh</span>
+            </div>
+            <div class="shell-access-line">
+                <span class="shell-access-prompt">$</span>
+                <span class="shell-access-cmd">open --interactive<span class="shell-access-caret">▊</span></span>
+            </div>
+            <p class="shell-access-hint">click anywhere on this box or press <kbd>`</kbd> to open the shell. (or hit the konami code if you must: <kbd>↑</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><kbd>←</kbd><kbd>→</kbd><kbd>b</kbd><kbd>a</kbd>)</p>
+        </aside>
+
         <!-- NOW -->
         <section id="now" class="section">
             <header class="section-head">
@@ -154,10 +169,6 @@
                             <li>
                                 <strong>Microsoft Mentorship Program</strong> <span class="xp-prev-meta">Detroit · Jun – Aug 2024</span>
                                 <br /><span class="xp-prev-body">Mentored through organizational data analysis, strategic decision-making, and data-driven reporting.</span>
-                            </li>
-                            <li>
-                                <strong>Adobe Mentorship Program</strong> <span class="xp-prev-meta">Detroit · Jun – Aug 2023</span>
-                                <br /><span class="xp-prev-body">Strategic discussions on performance metrics, exposure to workflow-optimization analysis in high-level meetings.</span>
                             </li>
                             <li>
                                 <strong>Prophets Group</strong> <span class="xp-prev-meta">Remote · Jan 2019 – Apr 2021</span>
@@ -378,7 +389,6 @@
 
     <footer class="site-footer">
         <p>typography · reaction-diffusion · ascii decoder · vanilla js.</p>
-        <p>press <kbd>↑</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>b</kbd> <kbd>a</kbd> for a shell.</p>
         <p>&copy; <span id="year"></span> Bishop Kammeraad</p>
     </footer>
 
