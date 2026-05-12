@@ -2,552 +2,367 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Bishop Kammeraad</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Bishop Kammeraad — Go-to-Market Engineer at Revivn, Co-Founder of Student Section. LLM engineering, MCP servers, eval harnesses." />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:title" content="Bishop Kammeraad" />
+    <meta property="og:description" content="LLM engineering, MCP servers, eval harnesses. GTM engineering at Revivn. Co-founder, Student Section." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://porkedchop.github.io/website/" />
+    <title>Bishop Kammeraad — ~/whoami</title>
 
-    <style>
-        :root {
-            --bg-color-dark: #000000;
-            --text-color-dark: #ffffff;
-            --bg-color-light: #ffffff;
-            --text-color-light: #000000;
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" />
 
-            --accent-color: #4ca1af;
-            --link-color: #4ca1af;
-            --hover-color: #4ca1af;
-        }
-
-        /* Dark mode variables */
-        body:not(.light-mode) {
-            --header-bg: var(--bg-color-dark);
-            --education-color: #660000;
-            --experience-color: #663300;
-            --projects-color: #666600;
-            --finance-color: #003300;
-            --skills-color: #000066;
-            --activities-color: #330066;
-            --awards-color: #660066;
-
-            --theme-box-bg: #ffffff;
-            --theme-box-text: #000000;
-        }
-
-        /* Light mode variables */
-        body.light-mode {
-            --header-bg: var(--bg-color-light);
-            --education-color: #ff9999;
-            --experience-color: #ffcc99;
-            --projects-color: #ffff99;
-            --finance-color: #99ff99;
-            --skills-color: #9999ff;
-            --activities-color: #cc99ff;
-            --awards-color: #ff99ff;
-
-            --theme-box-bg: #000000;
-            --theme-box-text: #ffffff;
-        }
-
-        body {
-            font-family: "Courier New", Courier, monospace;
-            margin: 0;
-            padding: 0;
-            background: var(--bg-color-dark);
-            color: var(--text-color-dark);
-            transition: background 0.3s, color 0.3s;
-        }
-
-        body.light-mode {
-            background: var(--bg-color-light);
-            color: var(--text-color-light);
-        }
-
-        a {
-            color: var(--link-color);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .terminal-header {
-            background: var(--header-bg);
-            position: relative;
-            padding-bottom: 60px;
-            transition: background 0.3s;
-        }
-
-        .ascii-marquee {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .ascii-art-mover {
-            display: inline-block;
-            white-space: nowrap;
-            animation: scroll 10s linear infinite;
-        }
-
-        .ascii-art {
-            display: inline-block;
-            white-space: pre;
-            margin: 0;
-            padding: 0;
-            line-height: 1.2;
-            font-size: 0.9rem;
-            color: transparent;
-            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-            -webkit-background-clip: text;
-            background-clip: text;
-            vertical-align: top;
-        }
-        .ascii-art:hover {
-            transform: scale(1.05);
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-        }
-
-        @media (max-width: 600px) {
-            .ascii-art {
-                font-size: 0.7rem;
-            }
-        }
-
-        /* With four copies, move from 0% to -25% for a seamless loop */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-25%); }
-        }
-
-        .header-info {
-            margin-top: 20px;
-            padding: 0 20px;
-        }
-
-        .directory-nav {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .directory-nav a {
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        .directory-nav a:hover {
-            color: var(--hover-color);
-        }
-
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 40px 0;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .section-container {
-            border-radius: 4px;
-            padding: 20px;
-            position: relative;
-            border: 2px solid var(--default-color);
-            margin-top: 40px;
-            margin-bottom: 60px;
-        }
-        .section-header {
-            position: absolute;
-            top: -22px;
-            left: 20px;
-            background: var(--default-color);
-            padding: 2px 8px;
-            border-radius: 4px 4px 0 0;
-        }
-        .section-header h2 {
-            margin: 0;
-            font-weight: bold;
-        }
-
-        #education .section-container {
-            --default-color: var(--education-color);
-        }
-        #experience .section-container {
-            --default-color: var(--experience-color);
-        }
-        #projects .section-container {
-            --default-color: var(--projects-color);
-        }
-        #finance-projects .section-container {
-            --default-color: var(--finance-color);
-        }
-        #skills .section-container {
-            --default-color: var(--skills-color);
-        }
-        #activities .section-container {
-            --default-color: var(--activities-color);
-        }
-        /* Awards section color */
-        #awards .section-container {
-            --default-color: var(--awards-color);
-        }
-
-        .hover-card {
-            background: transparent;
-            border: none;
-            padding: 10px;
-            transition: transform 0.3s;
-        }
-        .hover-card:hover {
-            transform: translateY(-2px);
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background: #000;
-            color: #e0e0e0;
-            margin-top: 40px;
-            border-top: 1px solid #4ca1af;
-        }
-
-        /* Always-visible theme box in top-right corner */
-        .theme-box {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--theme-box-bg);
-            color: var(--theme-box-text);
-            border: 1px solid var(--theme-box-text);
-            border-radius: 4px;
-            padding: 5px 10px;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: background 0.3s, color 0.3s;
-            font-size: 1.2rem;
-        }
-        .theme-btn {
-            background: transparent;
-            border: none;
-            color: inherit;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        .toggle-container {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+    <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body>
-    <header class="terminal-header">
-        <!-- Scrolling ASCII marquee -->
-        <div class="ascii-marquee">
-            <div class="ascii-art-mover">
-                <!-- 1 -->
-                <pre class="ascii-art">
-                  dP      oo        dP                       
-                  88                88                       
-                  88d888b.dP.d8888b.88d888b..d8888b.88d888b. 
-                  88'  `8888Y8ooooo.88'  `8888'  `8888'  `88 
-                  88.  .8888      8888    8888.  .8888.  .88 
-                  88Y8888'dP`88888P'dP    dP`88888P'88Y888P' 
-                                                    88       
-                                                    dP    
-                </pre>
-                <!-- 2 -->
-                <pre class="ascii-art">
-                  dP      oo        dP                       
-                  88                88                       
-                  88d888b.dP.d8888b.88d888b..d8888b.88d888b. 
-                  88'  `8888Y8ooooo.88'  `8888'  `8888'  `88 
-                  88.  .8888      8888    8888.  .8888.  .88 
-                  88Y8888'dP`88888P'dP    dP`88888P'88Y888P' 
-                                                    88       
-                                                    dP    
-                </pre>
-                <!-- 3 -->
-                <pre class="ascii-art">
-                  dP      oo        dP                       
-                  88                88                       
-                  88d888b.dP.d8888b.88d888b..d8888b.88d888b. 
-                  88'  `8888Y8ooooo.88'  `8888'  `8888'  `88 
-                  88.  .8888      8888    8888.  .8888.  .88 
-                  88Y8888'dP`88888P'dP    dP`88888P'88Y888P' 
-                                                    88       
-                                                    dP    
-                </pre>
-                <!-- 4 -->
-                <pre class="ascii-art">
-                  dP      oo        dP                       
-                  88                88                       
-                  88d888b.dP.d8888b.88d888b..d8888b.88d888b. 
-                  88'  `8888Y8ooooo.88'  `8888'  `8888'  `88 
-                  88.  .8888      8888    8888.  .8888.  .88 
-                  88Y8888'dP`88888P'dP    dP`88888P'88Y888P' 
-                                                    88       
-                                                    dP    
-                </pre>
-            </div>
-        </div>
 
-        <!-- Header Info (inverted automatically with theme) -->
-        <div class="header-info">
-            <p>Bishop Kammeraad<br>
-            Ann Arbor, MI | <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a> | (248) 403-1677</p>
-            <p>
-                <a href="https://www.linkedin.com/in/bishop-kammeraad-80593b204/" target="_blank">LinkedIn</a> | 
-                <a href="https://github.com/porkedchop" target="_blank">GitHub</a>
+    <!-- Boot overlay (covers everything during first paint) -->
+    <div id="boot" class="boot">
+        <pre id="boot-log" class="boot-log" aria-hidden="true"></pre>
+        <button id="boot-skip" class="boot-skip" type="button">[skip ⏎]</button>
+    </div>
+
+    <!-- Atmosphere layer: flow-field of drifting ASCII characters, behind everything -->
+    <canvas id="atmosphere" class="atmosphere" aria-hidden="true"></canvas>
+
+    <!-- Theme toggle (always-visible top-right) -->
+    <div class="theme-box" role="group" aria-label="Theme">
+        <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle theme">🌙</button>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero">
+        <canvas id="hero-shader" class="hero-shader" aria-hidden="true"></canvas>
+        <div class="hero-content">
+            <h1 class="hero-name">
+                <span class="hero-prompt">user@porkedchop:~$</span>
+                <span class="hero-typed" id="hero-typed">whoami</span><span class="hero-caret">▊</span>
+            </h1>
+            <p class="hero-tagline">
+                Bishop Kammeraad — LLM engineering, MCP, eval harnesses.<br />
+                Go-to-Market Engineer @ Revivn · Co-founder @ Student Section.
             </p>
-            <p>OS: macOS, Linux</p>
-            <p>Host: Ann Arbor, MI</p>
-            <p>Theme: <span id="theme-status-display">Dark</span></p>
-            <p>Terminal: zsh</p>
+            <p class="hero-links">
+                <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a> ·
+                <a href="https://www.linkedin.com/in/bishop-kammeraad-80593b204/" target="_blank" rel="noopener">linkedin</a> ·
+                <a href="https://github.com/porkedchop" target="_blank" rel="noopener">github</a> ·
+                <a href="images/resume.pdf" target="_blank" rel="noopener">resume.pdf</a>
+            </p>
         </div>
     </header>
 
-    <!-- Theme Toggle Button (always visible) -->
-    <div class="theme-box">
-        <button class="theme-btn" id="theme-btn">🌙</button>
-    </div>
-
-    <nav class="directory-nav">
-        <a href="#education">$ cd ~/education</a>
-        <a href="#experience">$ cd ~/experience</a>
-        <a href="#projects">$ cd ~/projects</a>
-        <a href="#finance-projects">$ cd ~/finance_projects</a>
-        <a href="#skills">$ cd ~/skills</a>
-        <a href="#activities">$ cd ~/activities</a>
-        <a href="#awards">$ cd ~/awards</a>
+    <nav class="directory-nav" aria-label="Sections">
+        <a href="#now">~/now</a>
+        <a href="#experience">~/experience</a>
+        <a href="#projects">~/projects</a>
+        <a href="#skills">~/skills</a>
+        <a href="#education">~/education</a>
+        <a href="#press">~/press</a>
+        <a href="#activities">~/activities</a>
     </nav>
 
-    <!-- Education Section -->
-    <section id="education">
-        <div class="container section-container">
-            <div class="section-header">
-                <h2>$ cat education.txt</h2>
-            </div>
-            <div class="hover-card">
-                <p><strong>University of Michigan - Ann Arbor</strong> (Sep 2020 to June 2025)</p>
-                <p>BS in Computer Science, BS in Economics</p>
-                <p><em>Coursework:</em> Data Structures and Algorithms, UI Development, Software Engineering, Database Management Systems, 
-                Econometrics, Micro & Macro Economic Theory, Corporate Finance, Money & Banking, Game Theory</p>
-            </div>
-        </div>
-    </section>
+    <main class="container">
 
-    <!-- Experience Section -->
-<section id="experience">
-    <div class="container section-container">
-        <div class="section-header">
-            <h2>$ cat experience.txt</h2>
-        </div>
-
-        <div class="hover-card">
-            <h3>Operations & Data Analyst – Neverland</h3>
-            <p>San Jose, CA (Sep 2024 – Present)</p>
-            <ul>
-                <li>Managed internal operations and structured deal tracking for 50+ NIL partnerships, leveraging Airtable and SQL-based systems to enhance data visibility and contract compliance.</li>
-                <li>Created dashboards and triage workflows to reduce execution delays and streamline content delivery across marketing and payout systems.</li>
-                <li>Collaborated cross-functionally to debug and document platform inconsistencies, supporting campaign launch stability and payout logic accuracy.</li>
-            </ul>
-        </div>
-
-        <div class="hover-card">
-            <h3>EMT – Universal EMS</h3>
-            <p>Detroit, MI (May 2022 – Aug 2022)</p>
-            <ul>
-                <li>Provided emergency BLS care across Detroit’s east side and maintained field-ready equipment under high-call volumes and HIPAA standards.</li>
-                <li>Logged and reconciled patient data across mobile terminals, ensuring continuity in handoff documentation and downstream reporting systems.</li>
-                <li>Supported team readiness and identified system-level reporting issues, contributing to software patch cycles and operational audit accuracy.</li>
-            </ul>
-        </div>
-
-        <div class="hover-card">
-            <h3>Founder & Operator – Bishop’s Bricks</h3>
-            <p>Ann Arbor, MI (Jan 2014 – Present)</p>
-            <ul>
-                <li>Built a LEGO-based e-commerce brand with over $2M in revenue. Led inventory forecasting, demand analytics, and bundled pricing strategy.</li>
-                <li>Developed margin-tracking tools in Python and Excel, performed cost allocation analyses, and reconciled transaction data across Stripe and Shopify.</li>
-                <li>Executed and documented over 100 product launches, overseeing digital marketing, customer conversion, and fulfillment workflows.</li>
-            </ul>
-        </div>
-
-        <div class="hover-card">
-            <h3>Mentee – Microsoft (Mentorship Program)</h3>
-            <p>Detroit, MI (Jun 2024 – Aug 2024)</p>
-            <ul>
-                <li>Worked under mentorship of Microsoft executives to analyze business data and present insights on leadership strategies and workflow design.</li>
-                <li>Strengthened financial modeling and communication skills through structured feedback loops and case-based simulation reviews.</li>
-                <li>Observed high-level decision-making processes and contributed to discussions on internal tooling optimization.</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container section-container">
-            <div class="section-header">
-                <h2>$ cat projects.txt</h2>
+        <!-- NOW -->
+        <section id="now" class="section section--now">
+            <div class="section-container">
+                <header class="section-header"><h2>$ cat now.txt</h2></header>
+                <div class="hover-card">
+                    <ul class="now-list">
+                        <li>Building Claude-powered eval harnesses & MCP servers at Revivn (Brooklyn).</li>
+                        <li>Shipping Student Section features for the spring sports window.</li>
+                        <li>Side-quest: a voice-driven pocket briefer on M5 Cardputer hardware.</li>
+                        <li>Always reachable — <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a>.</li>
+                    </ul>
+                </div>
             </div>
+        </section>
 
-            <!-- RenderCV Open-Source Project (Expanded) -->
-            <div class="hover-card">
-                <h3>RenderCV Open-Source Project</h3>
-                <ul>
-                    <li>Enhanced localization features by adding robust support for Chinese characters, ensuring accurate rendering for multilingual resumes.</li>
-                    <li>Researched and integrated relevant fonts, glyphs, and fallback strategies so Chinese text displays properly without breaking layout or formatting.</li>
-                    <li>Collaborated closely with maintainers and international users to gather feedback, run tests, and resolve edge cases, providing a seamless user experience for non-Latin scripts.</li>
-                    <li>Contributed to the project’s code quality by reviewing pull requests, adding test coverage, and documenting best practices for multilingual resume generation.</li>
-                    <li>Learned advanced PDF rendering techniques, text encoding, and design considerations for multi-lingual text while aligning code standards to the project’s guidelines.</li>
-                </ul>
-            </div>
+        <!-- EXPERIENCE -->
+        <section id="experience" class="section section--experience">
+            <div class="section-container">
+                <header class="section-header"><h2>$ cat experience.txt</h2></header>
 
-            <!-- Among Us Game Engine -->
-            <div class="hover-card">
-                <h3>Among Us Game Engine</h3>
-                <ul>
-                    <li>Implemented a real-time engine supporting multiplayer interactions and tasks.</li>
-                    <li>Utilized hash maps, priority queues, and graph traversal for efficiency.</li>
-                    <li>Enhanced performance and responsiveness via custom memory management and asynchronous processing.</li>
-                </ul>
-            </div>
+                <article class="hover-card xp">
+                    <header class="xp-head">
+                        <h3>Revivn <span class="xp-role">— Go-to-Market Engineer</span></h3>
+                        <p class="xp-meta">Brooklyn, NY · Feb 2026 – Present</p>
+                    </header>
+                    <p>
+                        Building evaluation-driven systems on top of the Claude API for the company's
+                        sales-intelligence pipeline. Work spans LLM scoring and quality-audit harnesses, batch-prompt
+                        evaluation with regression gates, multi-system integration in Python and TypeScript, and
+                        internal tooling (Flask dashboards with SSO, deployment-verified alert daemons).
+                    </p>
+                    <p class="xp-nda"><em>Mostly behind an NDA — happy to walk through specifics in conversation.</em></p>
+                </article>
 
-            <!-- Log Manager (LogMan) (Expanded) -->
-            <div class="hover-card">
-                <h3>Log Manager (LogMan)</h3>
-                <ul>
-                    <li>Designed a robust log-processing pipeline, ingesting logs from multiple sources and unifying formats for consistent storage and retrieval.</li>
-                    <li>Implemented data structures (e.g., balanced trees or indexed arrays) to enable precise time-based and content-based lookups at scale.</li>
-                    <li>Developed advanced filtering and sorting features (by timestamp, severity, and keywords) to isolate relevant events from thousands of concurrent log streams.</li>
-                    <li>Managed concurrency control for simultaneous read/write operations, ensuring system stability under high-volume logging bursts.</li>
-                    <li>Enhanced usability with pagination, inline highlights, and excerpted results, facilitating swift navigation of critical logs and error reports.</li>
-                    <li>Conducted performance profiling—evaluating throughput, memory usage, and query response times—to validate scalability in production-like scenarios.</li>
-                    <li>Documented best practices for ingestion, indexing, and maintenance, providing a roadmap for future extensions or customizations.</li>
-                </ul>
-            </div>
+                <article class="hover-card xp">
+                    <header class="xp-head">
+                        <h3>Student Section <span class="xp-role">— Co-Founder &amp; Product Engineer</span></h3>
+                        <p class="xp-meta">Ann Arbor, MI · Oct 2024 – Present</p>
+                    </header>
+                    <ul>
+                        <li>Co-founded a peer-to-peer student-only ticket marketplace for the University of Michigan; scaled to <strong>3,000+ active users</strong>, <strong>300–400 tickets per home game</strong>, and <strong>$76,000+ in transactions safeguarded</strong> against scams.</li>
+                        <li>Designed and shipped the listing and checkout flows on Stripe Connect, owning client-side state transitions, backend validations, and seller payout records.</li>
+                        <li>Wrote reconciliation logic that audits marketplace invariants continuously, holding operational load flat as volume grew.</li>
+                        <li>Instrumented funnel events to find drop-off, then iterated on UI copy and flow alongside the founding team.</li>
+                    </ul>
+                    <p class="xp-links">
+                        <a href="https://studentsection.app/" target="_blank" rel="noopener">studentsection.app</a> ·
+                        <a href="https://apps.apple.com/us/app/student-section-llc/id6751310729" target="_blank" rel="noopener">App Store</a> ·
+                        <a href="https://cse.engin.umich.edu/stories/game-day-made-easy-with-student-built-ticketing-app" target="_blank" rel="noopener">UMich CSE feature</a>
+                    </p>
+                </article>
 
-            <!-- AI-Powered Ticket Negotiation Tool -->
-            <div class="hover-card">
-                <h3>AI-Powered Ticket Negotiation Tool</h3>
-                <ul>
-                    <li>Developed a program to find optimal ticket prices and negotiate via ChatGPT.</li>
-                    <li>Secured tickets at market prices for higher-margin resales.</li>
-                </ul>
+                <article class="hover-card xp">
+                    <header class="xp-head">
+                        <h3>Bishop's Bricks <span class="xp-role">— Founder &amp; Operator</span></h3>
+                        <p class="xp-meta">Remote · Jan 2014 – Present</p>
+                    </header>
+                    <ul>
+                        <li>Built automation that synchronizes inventory and pricing across marketplaces, handling edge cases where platform rules conflict with internal stock logic.</li>
+                        <li>Wrote data utilities tracking order states, disputes, and fulfillment timing — operational visibility under high transaction volume.</li>
+                        <li>Diagnosed system failures by tracing data inconsistencies across listing, checkout, and shipping; converted manual workarounds into repeatable scripted fixes.</li>
+                    </ul>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Finance Projects Section -->
-    <section id="finance-projects">
-        <div class="container section-container">
-            <div class="section-header">
-                <h2>$ cat finance_projects.txt</h2>
-            </div>
-            <div class="hover-card">
-                <h3>RRK Products Capital Structure Analysis</h3>
-                <ul>
-                    <li>Assessed recapitalization impacts on firm value, stock price, and WACC.</li>
-                    <li>Constructed financial models in Excel, evaluating equity/debt financing and distress costs.</li>
-                    <li>Performed sensitivity analyses and recommended value-maximizing strategies.</li>
-                </ul>
-            </div>
-            <div class="hover-card">
-                <h3>Crystal Mountain Resort Financial Assessment</h3>
-                <ul>
-                    <li>Analyzed investment in new chair lifts: attendance, pricing, cash flows.</li>
-                    <li>Calculated NPV, IRR, and payback periods for comparison with existing equipment.</li>
-                    <li>Conducted scenario analyses and provided data-backed recommendations for capital allocation.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        <!-- PROJECTS -->
+        <section id="projects" class="section section--projects">
+            <div class="section-container">
+                <header class="section-header"><h2>$ ls -la ~/projects</h2></header>
+                <div class="project-grid">
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container section-container">
-            <div class="section-header">
-                <h2>$ cat skills.txt</h2>
-            </div>
-            <div class="hover-card">
-                <p><strong>Financial Analysis & Economic Modeling:</strong> Corporate Finance, Regression, Sensitivity Analysis, Game Theory, NPV/IRR</p>
-                <p><strong>Data Analysis & QA:</strong> Excel, Stata, MATLAB, R, Tableau, Test Automation, Bug Tracking</p>
-                <p><strong>Database & Cloud:</strong> SQL, MySQL, Oracle, AWS, Azure</p>
-                <p><strong>Programming:</strong> C++, C, Java, Python, SQL</p>
-                <p><strong>Languages:</strong> English (Native), German (B2), Spanish (A2)</p>
-            </div>
-        </div>
-    </section>
+                    <article class="project-tile" data-project="devils-advocate">
+                        <header class="project-head">
+                            <h3>devils-advocate-mcp</h3>
+                            <p class="project-tag">MCP · TypeScript · Anthropic SDK</p>
+                        </header>
+                        <p>Anti-sycophancy MCP server. Hard-codes the "no" so your AI stops being a yes-man — forces structured objections, cites hidden assumptions, refuses to capitulate to social pressure.</p>
+                        <div class="project-demo" aria-hidden="true">
+                            <pre class="project-ascii"><span class="ds-line ds-line--ai">AI: that sounds great, you should ship it.</span>
+<span class="ds-line ds-line--da">▌ devil's advocate engaged...</span>
+<span class="ds-line ds-line--push">→ flag: untested assumption on traffic shape</span>
+<span class="ds-line ds-line--push">→ flag: rollback path undefined</span>
+<span class="ds-line ds-line--push">→ recommend: stage gate before prod</span></pre>
+                        </div>
+                        <p class="project-links">
+                            <a href="https://github.com/porkedchop/devils-advocate-mcp" target="_blank" rel="noopener">repo →</a>
+                        </p>
+                    </article>
 
-    <!-- Activities Section -->
-    <section id="activities">
-        <div class="container section-container">
-            <div class="section-header">
-                <h2>$ cat activities.txt</h2>
-            </div>
-            <div class="hover-card">
-                <ul>
-                    <li><strong>U of M Student Ticket Group Owner:</strong> Manages 9,000+ members with automated identity verification and fraud prevention.</li>
-                    <li><strong>Online LEGO Resell Store (Owner):</strong> High-end LEGO collectibles, $2M+ revenue, officially licensed by LEGO.</li>
-                    <li><strong>Mensa:</strong> Inducted in 2022.</li>
-                    <li><strong>Finance Association:</strong> Member (2021 - 2023)</li>
-                    <li><strong>Association for Computing Machinery:</strong> Inducted in 2021.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+                    <article class="project-tile" data-project="claude-pocket-bot">
+                        <header class="project-head">
+                            <h3>claude-pocket-bot</h3>
+                            <p class="project-tag">MicroPython · ESP32-S3 · Whisper</p>
+                        </header>
+                        <p>Voice-driven prospect briefer on an M5 Cardputer-Adv. Hold space, ask about a company, see a brief on the 240×135 LCD. Streams I2S audio over TCP to a Whisper companion.</p>
+                        <div class="project-demo" aria-hidden="true">
+                            <pre class="project-ascii" id="cardputer-screen">┌──────────────────────────────┐
+│ ANTHROPIC                    │
+│ AI safety lab, SF            │
+│ Funded: $7.3B · 1,000+ ppl   │
+│ Models: Claude family        │
+│ ─ asks: GTM tooling, eval    │
+└──────────────────────────────┘
+[space] talk · [esc] back</pre>
+                        </div>
+                        <p class="project-links">
+                            <a href="https://github.com/porkedchop/claude-pocket-bot" target="_blank" rel="noopener">repo →</a>
+                        </p>
+                    </article>
 
-    <!-- Awards Section -->
-    <section id="awards">
-        <div class="container section-container">
-            <div class="section-header">
-                <h2>$ cat awards.txt</h2>
-            </div>
-            <div class="hover-card">
-                <ul>
-                    <li>Dean's List (4 semesters)</li>
-                    <li>Top Honors from Walled Lake Northern High School</li>
-                    <li>Top 5% of high school class</li>
-                    <li>3rd grade spelling champ for school (lol)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+                    <article class="project-tile" data-project="redwood">
+                        <header class="project-head">
+                            <h3>redwood-cleaning-co</h3>
+                            <p class="project-tag">Next.js 15 · React 19 · Tailwind</p>
+                        </header>
+                        <p>Modern marketing site for a local cleaning company. RSC, type-strict, deployed on Vercel.</p>
+                        <div class="project-demo" aria-hidden="true">
+                            <pre class="project-ascii">┌─ redwood-cleaning-co.vercel.app ──┐
+│  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   │
+│  ▓ book a clean    ▓               │
+│  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                │
+│  responsive · type-strict · RSC   │
+└────────────────────────────────────┘</pre>
+                        </div>
+                        <p class="project-links">
+                            <a href="https://redwood-cleaning-co.vercel.app" target="_blank" rel="noopener">live →</a> ·
+                            <a href="https://github.com/porkedchop/redwood-cleaning-co" target="_blank" rel="noopener">repo →</a>
+                        </p>
+                    </article>
 
-    <footer>
-        <p>&copy; 2024 Bishop Kammeraad</p>
+                    <article class="project-tile" data-project="middesk">
+                        <header class="project-head">
+                            <h3>middesk-assessment</h3>
+                            <p class="project-tag">Python · Google Forms API · SQLite</p>
+                        </header>
+                        <p>Take-home: YAML-driven Google Form generator + auto-ingest ETL into SQLite. Zero hardcoding — fields.yaml is the single source of truth. Repeatable per state/client.</p>
+                        <div class="project-demo" aria-hidden="true">
+                            <pre class="project-ascii">fields.yaml ─▶ create_form.py ─▶ Google Form
+                                       │
+                                       ▼
+                              responses (Sheet)
+                                       │
+                                  etl.py
+                                       │
+                                       ▼
+                                 forms.sqlite</pre>
+                        </div>
+                        <p class="project-links">
+                            <a href="https://github.com/porkedchop/Middesk-assessment" target="_blank" rel="noopener">repo →</a>
+                        </p>
+                    </article>
+
+                    <article class="project-tile" data-project="ss-rpa">
+                        <header class="project-head">
+                            <h3>student-section-rpa</h3>
+                            <p class="project-tag">Python · EasyOCR · PyAutoGUI</p>
+                        </header>
+                        <p>Pre-marketplace RPA bot for batched UMich student ticket transfers. Reads the screen via OCR, drives the click-flow with PyAutoGUI. Predecessor to the Student Section app.</p>
+                        <div class="project-demo" aria-hidden="true">
+                            <pre class="project-ascii">[screencap] → [OCR] → [find seat #] → [paste] → [confirm]
+   ▓▓░░░░       ░▓▓░       ░░▓▓░        ░░░▓▓     ▓▓▓▓▓
+   capture      read       locate       fill      submit</pre>
+                        </div>
+                        <p class="project-links">
+                            <a href="https://github.com/porkedchop/StudentSectionTicketTransferAutomation" target="_blank" rel="noopener">repo →</a>
+                        </p>
+                    </article>
+
+                    <article class="project-tile project-tile--private" data-project="gtm-tooling">
+                        <header class="project-head">
+                            <h3>gtm-tooling <span class="lock">🔒</span></h3>
+                            <p class="project-tag">Python · Anthropic SDK · Notion · multi-source enrichment</p>
+                        </header>
+                        <p>Work-adjacent: a constellation of GTM intelligence tools — account briefing, contact discovery, ICP scoring. Multi-source enrichment, rate-limited LLM passes, Slack and Notion delivery. Repos private; happy to demo on a call.</p>
+                        <div class="project-demo" aria-hidden="true">
+                            <pre class="project-ascii">[ sources ] ──▶ [ enrich ] ──▶ [ score ] ──▶ [ alert ]
+   linkedin       merge keys      LLM grader    slack/notion
+   crunchbase     dedupe          regress-gate
+   built-with     resolve         confidence</pre>
+                        </div>
+                        <p class="project-links"><em>private — ask me about it.</em></p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="section section--skills">
+            <div class="section-container">
+                <header class="section-header"><h2>$ cat engineering_and_research.txt</h2></header>
+                <div class="skill-grid">
+                    <div class="hover-card skill-card">
+                        <h3>Languages</h3>
+                        <p>Python · TypeScript · JavaScript · SQL</p>
+                    </div>
+                    <div class="hover-card skill-card">
+                        <h3>LLM Engineering</h3>
+                        <p>Claude API (sampling, batch, structured prompts) · MCP server design · prompt design and iteration with regression gates · eval harness construction.</p>
+                    </div>
+                    <div class="hover-card skill-card">
+                        <h3>Research Methodology</h3>
+                        <p>Adversarial test-case design · multi-stage grader systems · regression-detection across prompt versions · Wilson confidence intervals on small-N empirical claims · multi-agent governance with self-critique loops.</p>
+                    </div>
+                    <div class="hover-card skill-card">
+                        <h3>Production Engineering</h3>
+                        <p>APIs · web scraping · workflow orchestration · data-enrichment pipelines · Flask + Okta SSO + role-based access · Railway deployment with build-stamped verification.</p>
+                    </div>
+                    <div class="hover-card skill-card">
+                        <h3>Spoken</h3>
+                        <p>English (native) · German (B2) · Spanish (A2)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education" class="section section--education">
+            <div class="section-container">
+                <header class="section-header"><h2>$ cat education.txt</h2></header>
+                <div class="hover-card">
+                    <p><strong>University of Michigan — Ann Arbor</strong></p>
+                    <p>BS in Computer Science, BS in Economics — June 2025</p>
+                    <p><em>Relevant coursework:</em> Software Engineering, Databases, Systems Design, Machine Learning, Applied Econometrics.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESS -->
+        <section id="press" class="section section--press">
+            <div class="section-container">
+                <header class="section-header"><h2>$ cat press.txt</h2></header>
+                <figure class="press-quote">
+                    <blockquote>
+                        "A model for student-built innovation on campus."
+                    </blockquote>
+                    <figcaption>
+                        — <cite>University of Michigan College of Engineering</cite> ·
+                        <a href="https://cse.engin.umich.edu/stories/game-day-made-easy-with-student-built-ticketing-app" target="_blank" rel="noopener">read the feature →</a>
+                    </figcaption>
+                </figure>
+                <p class="press-extra">
+                    See also: <a href="https://studentsection.app/" target="_blank" rel="noopener">studentsection.app</a> ·
+                    <a href="https://apps.apple.com/us/app/student-section-llc/id6751310729" target="_blank" rel="noopener">Student Section on the App Store</a>.
+                </p>
+            </div>
+        </section>
+
+        <!-- ACTIVITIES -->
+        <section id="activities" class="section section--activities">
+            <div class="section-container">
+                <header class="section-header"><h2>$ cat activities.txt</h2></header>
+                <div class="hover-card">
+                    <ul>
+                        <li><strong>Mensa</strong> — inducted 2022.</li>
+                        <li><strong>Association for Computing Machinery</strong> — inducted 2021.</li>
+                        <li><strong>Neuroscience Club</strong> — 2021–2023.</li>
+                        <li><strong>Finance Association</strong> — 2021–2023.</li>
+                        <li><strong>EMT</strong> (Universal EMS, Detroit) — Jun 2021–Aug 2021.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <pre class="footer-ascii" id="footer-donut" aria-hidden="true"></pre>
+        <p>built in vanilla JS with a flow field, a fragment shader, and too many semicolons.</p>
+        <p>press <kbd>↑</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>b</kbd> <kbd>a</kbd> for a shell.</p>
+        <p>&copy; <span id="year"></span> Bishop Kammeraad</p>
     </footer>
 
-    <script>
-        const body = document.body;
-        const themeStatusDisplay = document.getElementById('theme-status-display');
-        const themeBtn = document.getElementById('theme-btn');
+    <!-- Konami terminal overlay -->
+    <div id="terminal-overlay" class="terminal-overlay" hidden>
+        <div class="terminal-window" role="dialog" aria-modal="true" aria-label="Interactive shell">
+            <div class="terminal-bar">
+                <span class="terminal-dot terminal-dot--r"></span>
+                <span class="terminal-dot terminal-dot--y"></span>
+                <span class="terminal-dot terminal-dot--g"></span>
+                <span class="terminal-title">bishop@porkedchop — zsh</span>
+                <button class="terminal-close" id="terminal-close" aria-label="Close">×</button>
+            </div>
+            <pre id="terminal-output" class="terminal-output">welcome. type `help` for commands.
 
-        function updateTheme() {
-            if (body.classList.contains('light-mode')) {
-                // Switch to dark mode
-                body.classList.remove('light-mode');
-                themeStatusDisplay.textContent = 'Dark';
-                themeBtn.textContent = '🌙'; 
-            } else {
-                // Switch to light mode
-                body.classList.add('light-mode');
-                themeStatusDisplay.textContent = 'Light';
-                themeBtn.textContent = '☀️'; 
-            }
-        }
+</pre>
+            <div class="terminal-input-row">
+                <span class="terminal-prompt">$</span>
+                <input id="terminal-input" class="terminal-input" type="text" autocomplete="off" spellcheck="false" />
+            </div>
+        </div>
+    </div>
 
-        themeBtn.addEventListener('click', updateTheme);
-
-        // Smooth scrolling for directory links
-        document.querySelectorAll('.directory-nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
+    <!-- Module entry -->
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
