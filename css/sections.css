@@ -1,0 +1,256 @@
+/* ====================================================================
+   sections.css — per-section visual treatments
+   ==================================================================== */
+
+/* ----- /now ----- */
+.now-list { list-style: none; padding: 0; margin: 0; }
+.now-list li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+}
+.now-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* ----- /experience ----- */
+.xp + .xp { margin-top: 16px; }
+.xp-head h3 {
+    font-size: 1.05rem;
+    color: var(--fg);
+}
+.xp-role { color: var(--fg-muted); font-weight: 400; }
+.xp-meta { color: var(--fg-muted); font-size: 0.85rem; margin: 2px 0 8px; }
+.xp ul { margin-top: 6px; }
+.xp-nda {
+    color: var(--fg-muted);
+    font-size: 0.88rem;
+    border-left: 2px solid var(--accent);
+    padding: 4px 0 4px 10px;
+    margin-top: 10px;
+}
+.xp-links {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+}
+
+/* ----- /projects ----- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+}
+@media (max-width: 720px) {
+    .project-grid { grid-template-columns: 1fr; }
+}
+
+.project-tile {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 16px 14px;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.project-tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at var(--mx, 50%) var(--my, 50%),
+        color-mix(in srgb, var(--accent) 18%, transparent) 0%,
+        transparent 55%
+    );
+    opacity: 0;
+    transition: opacity 0.35s;
+    pointer-events: none;
+}
+.project-tile:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+    box-shadow: 0 12px 30px -18px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+.project-tile:hover::before { opacity: 1; }
+
+.project-head h3 {
+    font-size: 1rem;
+    color: var(--fg);
+    margin: 0;
+}
+.project-tag {
+    color: var(--fg-muted);
+    font-size: 0.78rem;
+    margin: 2px 0 6px;
+    letter-spacing: 0.02em;
+}
+.project-demo {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px;
+    overflow-x: auto;
+}
+.project-ascii {
+    margin: 0;
+    color: var(--fg-muted);
+    font-size: 0.74rem;
+    line-height: 1.35;
+    white-space: pre;
+    font-family: var(--font-mono);
+}
+.ds-line { display: block; }
+.ds-line--ai { color: var(--fg-muted); }
+.ds-line--da { color: var(--danger); font-weight: 600; }
+.ds-line--push { color: var(--accent); }
+
+.project-links {
+    margin-top: auto;
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+}
+
+.project-tile--private { border-style: dashed; }
+.project-tile--private .lock { font-size: 0.85em; opacity: 0.7; }
+
+/* ----- /skills ----- */
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+}
+@media (max-width: 640px) {
+    .skill-grid { grid-template-columns: 1fr; }
+}
+.skill-card {
+    padding: 14px 16px 12px;
+    margin: 0;
+}
+.skill-card h3 {
+    font-size: 0.92rem;
+    color: var(--accent);
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+}
+.skill-card p { margin: 0; font-size: 0.92rem; color: var(--fg); }
+.skill-card:nth-child(2) h3 { color: var(--accent-2); }
+.skill-card:nth-child(3) h3 { color: var(--accent-3); }
+.skill-card:nth-child(4) h3 { color: var(--success); }
+.skill-card:nth-child(5) h3 { color: var(--fg-muted); }
+/* span the last odd card across both columns if there's a 5th */
+.skill-card:nth-child(5):last-child { grid-column: 1 / -1; }
+
+/* ----- /press ----- */
+.press-quote {
+    margin: 12px 0;
+    padding: 18px 22px;
+    border-left: 3px solid var(--accent-2);
+    background: var(--bg-card);
+    border-radius: 0 6px 6px 0;
+}
+.press-quote blockquote {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--fg);
+    font-style: italic;
+}
+.press-quote figcaption {
+    margin-top: 10px;
+    color: var(--fg-muted);
+    font-size: 0.88rem;
+}
+.press-quote cite { font-style: normal; color: var(--fg); }
+.press-extra { margin-top: 14px; color: var(--fg-muted); font-size: 0.9rem; }
+
+/* ----- Terminal overlay (Konami) ----- */
+.terminal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, #000 65%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+.terminal-overlay[hidden] { display: none; }
+.terminal-window {
+    width: min(720px, 92vw);
+    max-height: 80vh;
+    background: #0c0d11;
+    color: #d6e4dc;
+    border: 1px solid #2a2f38;
+    border-radius: 8px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: var(--font-mono);
+}
+.terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: #1a1d24;
+    border-bottom: 1px solid #2a2f38;
+    font-size: 0.78rem;
+    color: #93a0aa;
+}
+.terminal-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    display: inline-block;
+}
+.terminal-dot--r { background: #ff5f56; }
+.terminal-dot--y { background: #ffbd2e; }
+.terminal-dot--g { background: #27c93f; }
+.terminal-title { flex: 1; text-align: center; }
+.terminal-close {
+    background: transparent;
+    border: none;
+    color: #93a0aa;
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+.terminal-output {
+    margin: 0;
+    padding: 14px;
+    font-size: 0.85rem;
+    color: #b6e3c9;
+    flex: 1;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 200px;
+}
+.terminal-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-top: 1px solid #2a2f38;
+    background: #0c0d11;
+}
+.terminal-prompt {
+    color: var(--accent);
+    font-weight: 700;
+}
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #d6e4dc;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}

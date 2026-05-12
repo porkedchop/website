@@ -1,0 +1,82 @@
+/* ====================================================================
+   animations.css — scroll-driven reveals, view transitions, glitches
+   ==================================================================== */
+
+/* Reveal sections as they scroll into view (intersection observer adds .in-view) */
+.section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reveal staggered cards inside a section */
+.section .hover-card,
+.section .project-tile,
+.section .skill-card {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.section.in-view .hover-card,
+.section.in-view .project-tile,
+.section.in-view .skill-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section.in-view .hover-card:nth-child(2) { transition-delay: 0.08s; }
+.section.in-view .hover-card:nth-child(3) { transition-delay: 0.16s; }
+.section.in-view .project-tile:nth-child(2) { transition-delay: 0.06s; }
+.section.in-view .project-tile:nth-child(3) { transition-delay: 0.12s; }
+.section.in-view .project-tile:nth-child(4) { transition-delay: 0.18s; }
+.section.in-view .project-tile:nth-child(5) { transition-delay: 0.24s; }
+.section.in-view .project-tile:nth-child(6) { transition-delay: 0.30s; }
+.section.in-view .skill-card:nth-child(2) { transition-delay: 0.06s; }
+.section.in-view .skill-card:nth-child(3) { transition-delay: 0.12s; }
+.section.in-view .skill-card:nth-child(4) { transition-delay: 0.18s; }
+.section.in-view .skill-card:nth-child(5) { transition-delay: 0.24s; }
+
+/* Glitch flash used when interacting with the devils-advocate demo */
+@keyframes glitchFlash {
+    0%, 100% { transform: translate(0); filter: none; }
+    20% { transform: translate(-1px, 0); filter: hue-rotate(15deg); }
+    40% { transform: translate(1px, 0); filter: hue-rotate(-15deg); }
+    60% { transform: translate(0, 1px); }
+    80% { transform: translate(0, -1px); }
+}
+.glitching { animation: glitchFlash 0.4s steps(1) 2; }
+
+/* Subtle pulse for the press quote when it lands */
+@keyframes pressGlow {
+    0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-2) 40%, transparent); }
+    100% { box-shadow: 0 0 0 16px color-mix(in srgb, var(--accent-2) 0%,  transparent); }
+}
+.section--press.in-view .press-quote {
+    animation: pressGlow 1.6s ease-out 0.3s 1;
+}
+
+/* View Transitions API — gentle cross-fade for in-page anchor nav */
+@view-transition { navigation: auto; }
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.35s;
+}
+
+/* When user prefers reduced motion, kill the reveal animations */
+@media (prefers-reduced-motion: reduce) {
+    .section,
+    .section .hover-card,
+    .section .project-tile,
+    .section .skill-card {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .glitching, .section--press.in-view .press-quote {
+        animation: none !important;
+    }
+}
