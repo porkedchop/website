@@ -6,7 +6,7 @@
     <meta name="description" content="Bishop Kammeraad — Go-to-Market Engineer at Revivn, Co-Founder of Student Section." />
     <meta name="theme-color" content="#0a0a0a" />
     <meta property="og:title" content="Bishop Kammeraad" />
-    <meta property="og:description" content="GTM engineering at Revivn. Co-founder, Student Section. UMich CS + Econ '25." />
+    <meta property="og:description" content="Builds AI agents a sales team uses daily at Revivn. Co-founder, Student Section. UMich CS + Econ '25." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://porkedchop.github.io/website/" />
     <title>Bishop Kammeraad — ~/whoami</title>
@@ -23,9 +23,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" />
 
-    <link rel="stylesheet" href="css/styles.css?v=9" />
-    <link rel="stylesheet" href="css/sections.css?v=9" />
-    <link rel="stylesheet" href="css/animations.css?v=9" />
+    <link rel="stylesheet" href="css/styles.css?v=10" />
+    <link rel="stylesheet" href="css/sections.css?v=10" />
+    <link rel="stylesheet" href="css/animations.css?v=10" />
 </head>
 <body>
 
@@ -59,6 +59,8 @@
                 <a href="https://www.linkedin.com/in/bishop-kammeraad-80593b204/" target="_blank" rel="noopener">linkedin</a>
                 <span class="sep">/</span>
                 <a href="https://github.com/porkedchop" target="_blank" rel="noopener">github</a>
+                <span class="sep">/</span>
+                <a href="images/resume.pdf" target="_blank" rel="noopener">resume</a>
             </p>
         </div>
     </header>
@@ -106,8 +108,9 @@
                 <pre class="section-ascii" data-art-id="now" aria-hidden="true"></pre>
                 <div class="section-body">
                     <ul class="now-list">
-                        <li>Building Claude-powered eval harnesses, ICP scoring, and prospect-pipeline automations at Revivn (Brooklyn).</li>
-                        <li>Shipping Student Section features for the fall sports window.</li>
+                        <li>Building Revvy at Revivn (Brooklyn): an AI copilot the sales team uses every day. Reads the CRM, calls and email, drafts in each rep's voice, acts on their behalf.</li>
+                        <li>Running the GTM platform behind it: ICP scoring of 15,700 companies, the prospecting dashboard, and the pipelines on Snowflake, Salesforce, Clay and Postgres. Ships to prod daily.</li>
+                        <li>Student Section is live on four campuses for the fall window; the transfer agent moves the tickets unattended.</li>
                         <li>Side-quest: a voice-driven pocket briefer on M5 Cardputer hardware.</li>
                         <li>Always reachable — <a href="mailto:kammeraa@umich.edu">kammeraa@umich.edu</a>.</li>
                     </ul>
@@ -137,10 +140,12 @@
                             <p class="xp-meta">Brooklyn, NY · Feb 2026 – Present</p>
                         </header>
                         <ul>
-                            <li>Build Claude-powered scoring, validation, and quality audits across the prospect pipeline — ICP scoring models, Claude Opus batch quality audits, and a Clay enrichment pipeline that verifies prospect data at scale via structured prompting, batch evaluation, and ground-truth reconciliation.</li>
-                            <li>Architect the integration stack in Python and TypeScript across Snowflake, Salesforce, Clay, Brave Search, the Anthropic API, Slack, Google News, ZoomInfo, and Okta — funneling the raw company universe into a verified ICP cohort.</li>
-                            <li>Ship the production tooling sales uses daily — a Flask dashboard with Okta SSO and role-based access for admins, leadership, and reps; a 24/7 Slack alert daemon on Railway with multi-gate deduplication and build-stamped deployment verification; an automated territory-distribution workflow with sandbox dry-run mode.</li>
-                            <li>Translate open-ended growth questions into shipped systems — vendor audits, Clay-based contact waterfalls as enrichment replacements, and a cohort-survival forecasting framework with tier-aware churn definitions for financial modeling.</li>
+                            <li>Built and own the GTM platform for a 19-rep revenue team: ICP scoring of 15,700 prospect companies, a dashboard leadership uses as the prospecting source of truth, and the pipelines behind it (Snowflake, Salesforce, Fivetran, Clay, Postgres) running on Railway.</li>
+                            <li>Built Revvy, an AI copilot reps use every day. It reads the CRM, call transcripts and email, drafts outreach in each rep's own voice, and preps meetings. Red-teamed before every release by running the agent as each rep; its one hard rule is that no rep ever sees another rep's book.</li>
+                            <li>Drove adoption without a mandate: an <code>/enrich</code> agent rolled out to 19 reps through direct onboarding, then a written evaluation that ended the ZoomInfo contract in favor of the internal replacement.</li>
+                            <li>Automated the marketing-to-sales handoff: website visitor de-anonymization routed to a Slack digest, and champion job-change tracking with a Monday digest to leadership.</li>
+                            <li>Ran the model layer on evidence: cost-aware routing across Haiku, Sonnet and Opus (3,000+ contacts scored for ~$50), an Opus judge that re-reads every lost deal's calls and audits the loss reason a human entered, and a retrieval layer evaluated head-to-head against vector RAG.</li>
+                            <li>Found and fixed a warehouse billing 24 hours a day while 60% idle: cut overnight warm time 41% and wrote the postmortem, rules and lint hook that keep it fixed.</li>
                         </ul>
                     </article>
 
@@ -151,9 +156,9 @@
                         </header>
                         <ul>
                             <li>Co-founded a peer-to-peer student-only ticket marketplace for the University of Michigan; scaled to <strong>3,000+ active users</strong>, <strong>300–400 tickets per home game</strong>, and <strong>$76,000+ in transactions safeguarded</strong> against scams.</li>
-                            <li>Designed and shipped the listing and checkout flows on Stripe Connect, owning client-side state transitions, backend validations, and seller payout records.</li>
-                            <li>Wrote reconciliation logic that audits marketplace invariants continuously, holding operational load flat as volume grew.</li>
-                            <li>Instrumented funnel events to find drop-off, then iterated on UI copy and flow alongside the founding team.</li>
+                            <li>Own product and the money on Stripe Connect: pricing, fees, tax, seller payouts and disputes. Campus onboarding is a config change, not a project; the fourth campus launched that way.</li>
+                            <li>Built an unattended agent that transfers paid tickets between a vendor portal and an escrow inbox. Nothing is recorded until the vendor confirms it in its own words, ambiguous cases are refused, and every failure pages a person.</li>
+                            <li>Program managed the App Store launch: go/no-go review, blockers tracked to closure, privacy and platform compliance cleared. The review caught a sign-in bug that would have locked out every returning user.</li>
                         </ul>
                         <p class="xp-links">
                             <a href="https://studentsection.app/" target="_blank" rel="noopener">studentsection.app</a> ·
@@ -168,9 +173,7 @@
                             <p class="xp-meta">Remote · Jan 2014 – Present</p>
                         </header>
                         <ul>
-                            <li>Built automation that synchronizes inventory and pricing across marketplaces, handling edge cases where platform rules conflict with internal stock logic.</li>
-                            <li>Wrote data utilities tracking order states, disputes, and fulfillment timing — operational visibility under high transaction volume.</li>
-                            <li>Diagnosed system failures by tracing data inconsistencies across listing, checkout, and shipping; converted manual workarounds into repeatable scripted fixes.</li>
+                            <li>Twelve-year LEGO resale business across multiple marketplaces. Automated listing, pricing and inventory sync once manual reconciliation stopped scaling; kept it running through school and a full-time job by cutting it to what genuinely cannot be automated.</li>
                         </ul>
                     </article>
 
@@ -242,11 +245,18 @@
                         </article>
 
                         <article class="project-tile project-tile--private">
-                            <header class="project-head"><h3>gtm-tooling <span class="lock">🔒</span></h3></header>
+                            <header class="project-head"><h3>revvy <span class="lock">🔒</span></h3></header>
                             <ul class="project-tags">
-                                <li>Python</li><li>Anthropic SDK</li><li>Notion</li><li>multi-source enrichment</li>
+                                <li>Claude</li><li>Python</li><li>Flask</li><li>Postgres</li><li>Snowflake</li>
                             </ul>
-                            <p class="project-body">Work-adjacent: a constellation of GTM intelligence tools — account briefing, contact discovery, ICP scoring. Multi-source enrichment, rate-limited LLM passes, Slack and Notion delivery. Private; happy to demo on a call.</p>
+                            <p class="project-body">AI copilot for a sales team. 22-node indexed knowledge tree and a 27-tool registry split hot/cold; agentic progressive disclosure fetches 150–250-token leaves on demand, cutting the standing prompt ~4,100 tokens per message. Red-teamed as each rep before release. Private; happy to demo on a call.</p>
+                        </article>
+                        <article class="project-tile project-tile--private">
+                            <header class="project-head"><h3>ticket-transfer-agent <span class="lock">🔒</span></h3></header>
+                            <ul class="project-tags">
+                                <li>Python</li><li>IMAP</li><li>Postgres</li><li>Docker/Xvfb</li>
+                            </ul>
+                            <p class="project-body">Unattended agent that moves paid inventory between a vendor portal and an escrow inbox. Every write gated on vendor confirmation; watchdogs, structured logs, screenshot alerts and a human escape hatch keep failures loud. Cadence tuned on a year of production data: median response ~40% faster, vendor polling cut ~6x.</p>
                         </article>
 
                     </div>
@@ -280,15 +290,15 @@
                         </div>
                         <div class="skill-card">
                             <h3>LLM Engineering</h3>
-                            <p>Claude API (sampling, batch, structured prompts) · MCP server design · prompt design and iteration with regression gates · eval-harness construction.</p>
+                            <p>Agent orchestration and tool design · context engineering and structured outputs · evals and red-teaming · cost-aware model routing · human-in-the-loop guardrails · Anthropic / OpenAI APIs · MCP · Claude Code.</p>
                         </div>
                         <div class="skill-card">
-                            <h3>Research Methodology</h3>
-                            <p>Adversarial test-case design · multi-stage grader systems · regression-detection across prompt versions · Wilson confidence intervals on small-N empirical claims · multi-agent governance with self-critique loops.</p>
+                            <h3>Revenue &amp; Data Stack</h3>
+                            <p>Salesforce · Outreach · Clay · Fivetran · Snowflake · Postgres · Slack and Gmail integrations · lead scoring and routing · enrichment pipelines · web intent.</p>
                         </div>
                         <div class="skill-card">
                             <h3>Production Engineering</h3>
-                            <p>APIs · web scraping · workflow orchestration · data-enrichment pipelines · Flask + Okta SSO + role-based access · Railway deployment with build-stamped verification.</p>
+                            <p>Flask · Railway · Docker · Okta SSO and role-based access · Stripe Connect · web scraping · written postmortems and go/no-go reviews · ships to production daily.</p>
                         </div>
                         <div class="skill-card">
                             <h3>Spoken</h3>
@@ -421,6 +431,6 @@
         </div>
     </div>
 
-    <script type="module" src="js/main.js?v=9"></script>
+    <script type="module" src="js/main.js?v=10"></script>
 </body>
 </html>
